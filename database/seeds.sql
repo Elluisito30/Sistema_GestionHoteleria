@@ -92,9 +92,9 @@ INSERT INTO habitacion_caracteristicas (habitacion_id, caracteristica_id) VALUES
 -- =====================================================
 
 INSERT INTO usuarios (username, password_hash, nombre_completo, email, rol) VALUES
-('admin', '$2b$12$CufCza2ZDhoS2BnRMG2.a.Yj39CgQxPug7ea8hyPuzK8a1HVk6ng2', 'Administrador', 'admin@hotel.com', 'admin'),
-('gerente', '$2b$12$CufCza2ZDhoS2BnRMG2.a.Yj39CgQxPug7ea8hyPuzK8a1HVk6ng2', 'Gerente General', 'gerente@hotel.com', 'gerente'),
-('recepcion1', '$2b$12$CufCza2ZDhoS2BnRMG2.a.Yj39CgQxPug7ea8hyPuzK8a1HVk6ng2', 'Juan Pérez', 'juan.perez@hotel.com', 'recepcionista');
+('admin', '$2b$12$H5HgiMF4UdOQ7aZJigf0ruVj2cLOV4prh/5ozthfmGiGsoFbr3JHG', 'Administrador', 'admin@hotel.com', 'admin'),
+('gerente', '$2b$12$bsxE/UbGF7TtLLSf2vFkg.m6w2Gw4lha8KIX41Kbf202bMTfcDU36', 'Gerente General', 'gerente@hotel.com', 'gerente'),
+('recepcionista1', '$2b$12$AVjDLgaLML.bIFFvc6umaeSulRS3M41tmrwKUKl.7ASeljNeqAR.i', 'Juan Pérez', 'juan.perez@hotel.com', 'recepcionista');
 
 -- =====================================================
 -- 👥 5. HUÉSPEDES

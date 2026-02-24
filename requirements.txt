@@ -6,8 +6,8 @@
 streamlit==1.28.1
 python-dotenv==1.0.0
 psycopg2-binary==2.9.9
-pandas==2.2.0
-numpy==1.26.0
+pandas==2.0.3          # 👈 CAMBIADO
+numpy==1.24.3          # 👈 CAMBIADO
 
 # Database
 SQLAlchemy==2.0.23
