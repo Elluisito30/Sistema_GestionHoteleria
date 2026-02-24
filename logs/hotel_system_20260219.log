@@ -1,0 +1,71 @@
+2026-02-19 12:03:34,083 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:34,083 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:48,963 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:48,964 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:49,917 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:49,918 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:49,995 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:49,995 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:50,693 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:50,693 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:51,259 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:51,259 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:52,134 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:03:52,135 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-19 12:06:27,128 - utils.logger - WARNING - Intento de login fallido: gerente
+2026-02-19 12:06:39,087 - utils.logger - WARNING - Intento de login fallido: admin
+2026-02-19 12:14:48,399 - utils.logger - INFO - Usuario autenticado: admin
+2026-02-19 12:14:48,400 - utils.logger - INFO - Login exitoso: admin
+2026-02-19 12:15:00,747 - utils.logger - ERROR - Error en búsqueda de disponibilidad: unsupported operand type(s) for *: 'decimal.Decimal' and 'float'
+2026-02-19 12:15:13,902 - config.database - ERROR - Database connection error: no existe la función pg_catalog.extract(unknown, integer)
+LINE 6:                     AVG(EXTRACT(DAY FROM (r.fecha_check_out ...
+                                ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+
+2026-02-19 12:15:17,968 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:15:20,134 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:15:21,034 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:15:21,200 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:15:21,351 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:15:21,500 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:15:21,633 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:15:21,783 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:15:21,934 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:19:23,470 - utils.logger - WARNING - Intento de login fallido: gerente
+2026-02-19 12:19:30,674 - utils.logger - WARNING - Intento de login fallido: recepcion1
+2026-02-19 12:19:32,031 - utils.logger - WARNING - Intento de login fallido: recepcion1
+2026-02-19 12:19:37,770 - utils.logger - INFO - Usuario autenticado: admin
+2026-02-19 12:19:37,771 - utils.logger - INFO - Login exitoso: admin
+2026-02-19 12:19:59,729 - config.database - ERROR - Database connection error: 'latin-1' codec can't encode character '\u2022' in position 341: ordinal not in range(256)
+2026-02-19 12:20:51,064 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:52,962 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:53,099 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:53,430 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:53,614 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:53,749 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:53,933 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:54,037 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:54,182 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:54,328 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:54,466 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:20:54,664 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:21:45,395 - utils.logger - INFO - Usuario cerró sesión
+2026-02-19 12:30:16,664 - utils.logger - INFO - Usuario autenticado: admin
+2026-02-19 12:30:16,665 - utils.logger - INFO - Login exitoso: admin
+2026-02-19 12:32:17,950 - utils.logger - INFO - Usuario autenticado: admin
+2026-02-19 12:32:17,951 - utils.logger - INFO - Login exitoso: admin
+2026-02-19 12:34:20,289 - utils.logger - INFO - Usuario autenticado: admin
+2026-02-19 12:34:20,289 - utils.logger - INFO - Login exitoso: admin
+2026-02-19 12:38:48,812 - utils.logger - WARNING - Intento de login fallido: admin
+2026-02-19 12:38:56,615 - utils.logger - INFO - Usuario autenticado: admin
+2026-02-19 12:38:56,616 - utils.logger - INFO - Login exitoso: admin
+2026-02-19 12:38:56,923 - config.database - ERROR - Database connection error: no existe la función pg_catalog.extract(unknown, integer)
+LINE 3:                     COALESCE(AVG(EXTRACT(DAY FROM (fecha_che...
+                                         ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+
+2026-02-19 12:39:38,872 - utils.logger - INFO - Usuario autenticado: admin
+2026-02-19 12:39:38,873 - utils.logger - INFO - Login exitoso: admin
+2026-02-19 12:39:50,103 - utils.logger - ERROR - Error en búsqueda de disponibilidad: unsupported operand type(s) for *: 'decimal.Decimal' and 'float'
+2026-02-19 12:40:08,287 - config.database - ERROR - Database connection error: 'latin-1' codec can't encode character '\u2022' in position 341: ordinal not in range(256)
+2026-02-19 12:41:26,682 - config.database - ERROR - Database connection error: 'latin-1' codec can't encode character '\u2022' in position 341: ordinal not in range(256)

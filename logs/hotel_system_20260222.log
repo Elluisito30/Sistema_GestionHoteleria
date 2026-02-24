@@ -1,0 +1,1030 @@
+2026-02-22 18:07:52,968 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:07:52,969 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:46,205 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:46,206 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:52,556 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:52,566 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:55,088 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:55,089 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:55,631 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:55,632 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:55,930 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:55,930 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:56,369 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:56,369 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:56,686 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:56,686 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:56,886 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:56,886 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:57,257 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:57,258 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:57,442 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:48:57,443 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:49:10,082 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:49:10,083 - utils.logger - ERROR - Error en autenticación: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:56:57,587 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:56:57,671 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:56:57,672 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:56:57,683 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:56:59,371 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:56:59,424 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:56:59,424 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:56:59,427 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:56:59,580 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:56:59,635 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:56:59,635 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:56:59,638 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:56:59,944 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:00,095 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:00,096 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:00,105 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:00,105 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:00,239 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:00,240 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:00,242 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:00,366 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:00,457 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:00,512 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:00,512 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:00,514 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:00,642 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:00,642 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:00,645 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:00,774 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:00,825 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:00,826 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:00,828 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:02,464 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:02,519 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:02,520 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:02,522 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:02,671 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:02,725 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:02,725 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:02,728 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:02,852 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:02,903 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:02,904 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:02,906 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:03,042 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:03,092 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:03,092 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:03,095 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:03,235 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:03,274 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:03,343 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:03,344 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:03,345 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:03,477 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:03,478 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:03,479 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:03,624 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:03,678 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:03,679 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:03,681 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:03,925 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:03,984 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:03,984 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:03,987 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:04,174 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:04,323 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:04,324 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:04,326 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 18:57:04,458 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 18:57:04,511 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:04,511 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 18:57:04,513 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHotelería-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:11:42,195 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:11:42,391 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:42,392 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:42,397 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:11:45,437 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:11:45,479 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:45,479 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:45,481 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:11:45,595 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:11:45,637 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:45,637 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:45,639 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:11:45,753 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:11:45,789 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:45,790 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:45,791 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:11:45,906 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:11:45,942 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:45,943 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:45,944 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:11:46,059 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:11:46,095 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:46,095 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:46,097 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:11:46,210 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:11:46,247 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:46,247 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:46,249 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:11:46,370 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:11:46,404 - config.database - ERROR - Database connection error: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:46,405 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:11:46,406 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 50, in authenticate
+    with db.get_cursor() as cursor:
+         ~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 34, in get_cursor
+    with self.get_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 23, in get_connection
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:27:42,535 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:27:42,592 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:42,592 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:42,596 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self._auth_connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:27:47,459 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:27:47,606 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:47,606 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:47,607 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self._auth_connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:27:49,791 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:27:49,828 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:49,828 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:49,830 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self._auth_connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:27:50,437 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:27:50,580 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:50,581 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:50,582 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self._auth_connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:27:50,648 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:27:50,729 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:27:50,769 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:50,769 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:50,771 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self._auth_connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:27:50,829 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:50,830 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:27:50,832 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self._auth_connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:34:06,519 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:34:06,659 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:06,659 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:06,661 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:34:10,482 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:34:10,520 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:10,520 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:10,522 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:34:10,698 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:34:10,735 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:10,735 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:10,737 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:34:10,873 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:34:10,910 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:10,911 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:10,912 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:34:11,040 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:34:11,078 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:11,079 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:11,082 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:34:11,190 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:34:11,227 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:11,227 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:11,229 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:34:11,338 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:34:11,379 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:11,379 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:34:11,381 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:47:32,284 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:47:32,334 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:47:32,334 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:47:32,339 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:47:35,516 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:47:35,660 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:47:35,661 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:47:35,663 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:47:37,249 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:47:37,288 - config.database - ERROR - Database connection error (auth): 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:47:37,289 - utils.logger - ERROR - ❌ Error en autenticación: UnicodeDecodeError - 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+2026-02-22 19:47:37,291 - utils.logger - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\utils\auth.py", line 51, in authenticate
+    with db.get_cursor_auth() as cursor:
+         ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 67, in get_cursor_auth
+    with self.get_connection_auth() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "C:\Trabajos UNT\CICLO VI EXT\SEMANA 03 LAB\Clase06 - ING.REQ\SistemaHoteleria-ING.REQ\src\config\database.py", line 29, in get_connection_auth
+    conn = psycopg2.connect(**self.connection_params)
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 85: invalid continuation byte
+
+2026-02-22 19:55:12,774 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:55:13,089 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-22 19:55:18,006 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 19:55:18,381 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-22 19:55:18,383 - utils.logger - INFO - Login exitoso: admin
+2026-02-22 19:55:20,606 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:17:57,333 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 20:17:57,696 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-22 20:18:14,816 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 20:18:15,119 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-22 20:18:15,121 - utils.logger - INFO - Login exitoso: admin
+2026-02-22 20:18:43,066 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:18:44,802 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:18:49,454 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:18:49,902 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:19:44,951 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:19:45,442 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:19:45,691 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:19:45,960 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:19:46,183 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:19:46,336 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:19:46,488 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:19:46,668 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:19:47,647 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:20:51,228 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 20:20:51,537 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-22 20:20:51,539 - utils.logger - INFO - Login exitoso: admin
+2026-02-22 20:20:53,202 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:21:02,350 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 20:21:02,728 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-22 20:21:02,730 - utils.logger - INFO - Login exitoso: admin
+2026-02-22 20:21:05,397 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:21:14,236 - utils.logger - INFO - Intento de autenticación para usuario: gerente
+2026-02-22 20:21:14,519 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: gerente
+2026-02-22 20:21:14,531 - utils.logger - INFO - Login exitoso: gerente
+2026-02-22 20:21:49,750 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:22:04,131 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-22 20:22:04,509 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-22 20:22:04,520 - utils.logger - INFO - Login exitoso: recepcionista1
+2026-02-22 20:22:17,100 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 20:22:29,737 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 20:22:30,017 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-22 20:22:36,786 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 20:22:37,177 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-22 20:22:37,187 - utils.logger - INFO - Login exitoso: admin
+2026-02-22 20:27:09,571 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 20:27:09,860 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-22 20:27:09,863 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-22 20:27:38,237 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 22:17:44,605 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 22:17:44,894 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-22 22:17:44,902 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-22 22:18:01,563 - utils.logger - INFO - Usuario cerró sesión
+2026-02-22 22:18:51,049 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 22:18:51,306 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-22 22:18:56,297 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-22 22:18:56,552 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-22 22:18:56,561 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 00:37:34,562 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 00:37:34,878 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-23 00:37:42,109 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 00:37:42,395 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 00:37:42,396 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 00:43:51,030 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 00:43:51,297 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 00:43:51,307 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 00:45:39,576 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 00:45:39,842 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 00:45:39,853 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 01:01:47,060 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:01:47,374 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 01:01:47,376 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 01:08:05,557 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:08:05,832 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 01:08:05,834 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 01:27:41,236 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:27:41,500 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 01:27:41,502 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 01:33:26,075 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:33:26,362 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 01:33:26,363 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 01:41:27,627 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:41:27,879 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-23 01:41:33,089 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:41:33,345 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 01:41:33,347 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 01:44:46,768 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:44:47,021 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 01:44:47,032 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 01:52:38,260 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:52:38,537 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 01:52:38,538 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 01:57:07,584 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:57:07,837 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-23 01:57:15,236 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:57:15,496 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 01:57:15,498 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 01:59:18,943 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:59:19,195 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-23 01:59:25,368 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 01:59:25,621 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 01:59:25,631 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:01:15,714 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:01:16,046 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:01:16,048 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:02:44,353 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:02:44,652 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:02:44,654 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:07:10,244 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:07:10,502 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:07:10,512 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:09:33,324 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:09:33,574 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-23 02:09:39,560 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:09:39,810 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:09:39,820 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:10:56,982 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:10:57,234 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:10:57,243 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:12:05,957 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:12:06,212 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:12:06,221 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:16:51,369 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:16:51,624 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:16:51,626 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:24:19,111 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:24:19,392 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-23 02:24:28,377 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:24:28,639 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:24:28,650 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:25:52,261 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:25:52,536 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:25:52,538 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:30:56,750 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:30:57,013 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:30:57,014 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:31:55,130 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:31:55,491 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:31:55,501 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:44:00,992 - utils.logger - INFO - Usuario cerró sesión
+2026-02-23 02:45:44,665 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:45:45,000 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:45:45,002 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:45:47,339 - utils.logger - INFO - Usuario cerró sesión
+2026-02-23 02:45:52,296 - utils.logger - INFO - Intento de autenticación para usuario: gerente
+2026-02-23 02:45:52,553 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: gerente
+2026-02-23 02:45:52,563 - utils.logger - INFO - ✅ Login exitoso: gerente
+2026-02-23 02:48:04,965 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:48:05,219 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-23 02:48:09,215 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:48:09,466 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:48:09,467 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:49:03,616 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:49:03,972 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-23 02:49:09,636 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:49:09,890 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:49:09,892 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:49:22,886 - utils.logger - INFO - Usuario cerró sesión
+2026-02-23 02:49:33,346 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:49:33,598 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:49:33,600 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:49:38,451 - utils.logger - INFO - Usuario cerró sesión
+2026-02-23 02:49:54,869 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-23 02:49:55,169 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-23 02:49:55,180 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-23 02:51:34,969 - utils.logger - INFO - Usuario cerró sesión
