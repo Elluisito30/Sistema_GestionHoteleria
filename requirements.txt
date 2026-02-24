@@ -2,36 +2,36 @@
 # 🏨 SISTEMA DE GESTIÓN HOTELERA - DEPENDENCIAS
 # =====================================================
 
-# Core - ORDEN IMPORTANTE: setuptools primero
-setuptools==69.5.1
-wheel==0.43.0
-streamlit==1.28.1
-python-dotenv==1.0.0
-psycopg2-binary==2.9.9
-pandas==2.0.3
-numpy==1.24.3
+# Core
+setuptools>=75.3.0
+wheel>=0.45.1
+streamlit>=1.40.0,<2.0.0
+python-dotenv>=1.0.1,<2.0.0
+psycopg2-binary>=2.9.9,<3.0.0
+pandas>=2.2.3,<3.0.0
+numpy>=2.1.3,<3.0.0
 
 # Database
-SQLAlchemy==2.0.23
+SQLAlchemy>=2.0.36,<3.0.0
 
 # Visualization
-plotly==5.18.0
-matplotlib==3.8.0
+plotly>=5.24.1,<6.0.0
+matplotlib>=3.9.2,<4.0.0
 
 # PDF Generation
-fpdf==1.7.2
-reportlab==4.0.0
+fpdf2>=2.7.9,<3.0.0
+reportlab>=4.2.5,<5.0.0
 
 # Authentication
-bcrypt==4.0.1
-passlib==1.7.4
-python-jose==3.3.0
+bcrypt>=4.2.0,<5.0.0
+passlib>=1.7.4,<2.0.0
+python-jose>=3.3.0,<4.0.0
 
 # Utils
-python-dateutil==2.8.2
-pytz==2023.3
-openpyxl==3.1.2
-xlsxwriter==3.1.9
+python-dateutil>=2.9.0,<3.0.0
+pytz>=2024.2
+openpyxl>=3.1.5,<4.0.0
+xlsxwriter>=3.2.0,<4.0.0
 
 # Monitoring
-loguru==0.7.2
+loguru>=0.7.2,<1.0.0

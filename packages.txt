@@ -1,8 +1,2 @@
 libpq-dev
 build-essential
-python3-dev
-gcc
-g++
-libcairo2-dev
-pkg-config
-cmake
