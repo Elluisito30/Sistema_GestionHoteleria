@@ -1,4 +1,3 @@
-# packages.txt - Dependencias del sistema para PostgreSQL
 libpq-dev
 build-essential
 python3-dev
