@@ -1,4 +1,0 @@
-2026-02-24 00:22:10,116 - utils.logger - INFO - Intento de autenticación para usuario: admin
-2026-02-24 00:22:10,570 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
-2026-02-24 00:22:10,572 - utils.logger - INFO - ✅ Login exitoso: admin
-2026-02-24 00:22:24,368 - utils.logger - INFO - Usuario cerró sesión
