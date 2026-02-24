@@ -2,8 +2,9 @@
 # 🏨 SISTEMA DE GESTIÓN HOTELERA - DEPENDENCIAS
 # =====================================================
 
-# Core
-setuptools==69.5.1  # 👈 NUEVO - necesario para instalar otros paquetes
+# Core - ORDEN IMPORTANTE: setuptools primero
+setuptools==69.5.1
+wheel==0.43.0
 streamlit==1.28.1
 python-dotenv==1.0.0
 psycopg2-binary==2.9.9

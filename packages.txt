@@ -5,3 +5,4 @@ gcc
 g++
 libcairo2-dev
 pkg-config
+cmake
