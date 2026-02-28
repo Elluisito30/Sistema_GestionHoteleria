@@ -305,6 +305,10 @@ def show():
     # Inicializar caché de reservas activas
     if 'reservas_activas_cache' not in st.session_state:
         st.session_state.reservas_activas_cache = None
+
+    # Inicializar contador para limpiar buscador de reservas
+    if 'buscar_reserva_counter' not in st.session_state:
+        st.session_state.buscar_reserva_counter = 0
     
     # Obtener permission checker
     perm_checker = st.session_state.get('permission_checker', None)
@@ -322,7 +326,11 @@ def show():
     # Determinar qué tabs mostrar según permisos
     tabs_disponibles = []
     tab_funciones = []
-    
+
+    # Registrar Huésped - primero en el flujo
+    tabs_disponibles.append("👤 Registrar Huésped")
+    tab_funciones.append(mostrar_registro_huesped)
+
     # Buscar Disponibilidad - todos pueden ver
     tabs_disponibles.append("🔍 Buscar Disponibilidad")
     tab_funciones.append(mostrar_busqueda_disponibilidad)
@@ -332,18 +340,19 @@ def show():
         tabs_disponibles.append("📋 Reservas Activas")
         tab_funciones.append(mostrar_reservas_activas)
     
-    # 👇 NUEVA PESTAÑA: Huéspedes Alojados Ahora
-    tabs_disponibles.append("🏨 Alojados Ahora")
-    tab_funciones.append(mostrar_alojados_ahora)
-    
-    # Check-in/Check-out - solo si puede crear reservas o check-in
+    # Check-in/Check-out - antes de Alojados Ahora
     if perm_checker.can_any([Permission.BOOKING_CREATE, Permission.BOOKING_EDIT]):
         tabs_disponibles.append("✅ Check-in / Check-out")
         tab_funciones.append(mostrar_check_in_out)
-    
-    # Registrar Huésped - todos pueden (pero con limitaciones)
-    tabs_disponibles.append("👤 Registrar Huésped")
-    tab_funciones.append(mostrar_registro_huesped)
+
+    # Huéspedes Alojados Ahora
+    tabs_disponibles.append("🏨 Alojados Ahora")
+    tab_funciones.append(mostrar_alojados_ahora)
+
+    # Facturas
+    if perm_checker.can(Permission.INVOICE_VIEW):
+        tabs_disponibles.append("🧾 Facturas")
+        tab_funciones.append(mostrar_facturas)
     
     # Crear tabs
     tab_objects = st.tabs(tabs_disponibles)
@@ -446,14 +455,13 @@ def mostrar_busqueda_disponibilidad():
                 }
                 
                 opciones_lista = list(opciones_habitacion.keys())
-                # Eliminar duplicados por si acaso
                 opciones_lista = list(dict.fromkeys(opciones_lista))
                 
                 # Asegurar índice válido
                 if st.session_state.habitacion_idx >= len(opciones_lista):
                     st.session_state.habitacion_idx = 0
                 
-                # SELECTOR DE HABITACIÓN (NO CAUSA RERUN)
+                # SELECTOR DE HABITACIÓN
                 col_sel, col_btn = st.columns([5, 1])
                 
                 with col_sel:
@@ -463,7 +471,6 @@ def mostrar_busqueda_disponibilidad():
                         index=st.session_state.habitacion_idx,
                         key="selector_hab_final"
                     )
-                    # Actualizar índice SIN rerun
                     nuevo_idx = opciones_lista.index(seleccion)
                     if nuevo_idx != st.session_state.habitacion_idx:
                         st.session_state.habitacion_idx = nuevo_idx
@@ -479,6 +486,13 @@ def mostrar_busqueda_disponibilidad():
                 
                 # ===== BÚSQUEDA DE HUÉSPED =====
                 st.markdown("### 👤 Datos del Huésped")
+
+                # ── Aviso: registrar huésped nuevo en su pestaña ──────────────
+                _card_info(
+                    "💡 ¿El huésped no existe aún? Regístralo primero en la pestaña "
+                    "<strong>👤 Registrar Huésped</strong> y luego vuelve aquí para buscarlo.",
+                    "info"
+                )
                 
                 # Campo de búsqueda
                 termino_busqueda = st.text_input(
@@ -510,7 +524,6 @@ def mostrar_busqueda_disponibilidad():
                         }
                         opciones_lista_huesped = list(opciones_huesped.keys())
                         
-                        # Selector de huésped (sin mensaje de cantidad)
                         seleccion_huesped = st.selectbox(
                             "Seleccionar huésped",
                             opciones_lista_huesped,
@@ -520,13 +533,16 @@ def mostrar_busqueda_disponibilidad():
                         if seleccion_huesped:
                             huesped_id = opciones_huesped[seleccion_huesped]['id']
                             
-                            # Botón para limpiar búsqueda (más pequeño y discreto)
                             if st.button("✕ Limpiar búsqueda", key="btn_limpiar_busqueda_huesped"):
                                 st.session_state.busqueda_huesped_realizada = False
                                 st.session_state.resultados_huesped = []
                                 st.rerun()
                     else:
-                        st.warning("No se encontraron huéspedes. Complete los datos para uno nuevo.")
+                        _card_info(
+                            "⚠️ No se encontró el huésped. Ve a la pestaña "
+                            "<strong>👤 Registrar Huésped</strong> para darlo de alta y luego vuelve a buscarlo.",
+                            "warning"
+                        )
                         if st.button("↺ Intentar de nuevo", key="btn_reintentar_final"):
                             st.session_state.busqueda_huesped_realizada = False
                             st.rerun()
@@ -536,27 +552,22 @@ def mostrar_busqueda_disponibilidad():
                 
                 # FORMULARIO DE RESERVA
                 with st.form(key="form_reserva_final"):
-                    
-                    # Datos del nuevo huésped (solo si no se seleccionó uno existente)
+
+                    # ── Si no hay huésped seleccionado, bloquear el formulario ──
                     if not huesped_id:
-                        st.markdown("### 📝 Registrar Nuevo Huésped")
-                        
-                        col1, col2 = st.columns(2)
-                        with col1:
-                            nombre = st.text_input("Nombres *", key="nombre_final")
-                            documento = st.text_input("Documento *", key="doc_final")
-                            email = st.text_input("Email", key="email_final")
-                        
-                        with col2:
-                            apellido = st.text_input("Apellidos *", key="apellido_final")
-                            telefono = st.text_input("Teléfono *", key="tel_final")
-                    else:
-                        # Si hay huésped seleccionado, no mostrar el formulario de registro
-                        # Solo mostrar un mensaje discreto
-                        st.info(f"Huésped seleccionado: {seleccion_huesped}")
-                        # Campos ocultos con valores vacíos
-                        nombre = apellido = documento = telefono = ""
-                    
+                        st.warning(
+                            "⚠️ Debes seleccionar un huésped antes de confirmar la reserva. "
+                            "Usa el buscador de arriba o regístralo en la pestaña **👤 Registrar Huésped**."
+                        )
+
+                    # ── Resumen de fechas y habitación seleccionadas ──
+                    _card_info(
+                        f"📅 <strong>Check-in:</strong> {st.session_state.fecha_check_in_actual.strftime('%d/%m/%Y')} &nbsp;|&nbsp; "
+                        f"🔚 <strong>Check-out:</strong> {st.session_state.fecha_check_out_actual.strftime('%d/%m/%Y')} &nbsp;|&nbsp; "
+                        f"🏨 <strong>Habitación:</strong> {habitacion['numero']} — {habitacion['tipo_nombre']}",
+                        "info"
+                    )
+
                     st.markdown("### 🏨 Detalles de la Reserva")
                     col3, col4, col5 = st.columns(3)
                     
@@ -568,70 +579,65 @@ def mostrar_busqueda_disponibilidad():
                     
                     with col5:
                         total_dias = (st.session_state.fecha_check_out_actual - st.session_state.fecha_check_in_actual).days
-                        # Convertir Decimal a float
                         tarifa_float = float(habitacion['tarifa_calculada']) if hasattr(habitacion['tarifa_calculada'], 'item') else float(habitacion['tarifa_calculada'])
                         total_estancia = tarifa_float * total_dias
                         st.metric("Total estancia", f"S/ {total_estancia:,.2f}", f"{total_dias} días")
                     
                     notas = st.text_area("Notas adicionales", key="notas_final")
                     
-                    submitted = st.form_submit_button("✅ Confirmar Reserva", type="primary", use_container_width=True)
+                    submitted = st.form_submit_button(
+                        "✅ Confirmar Reserva",
+                        type="primary",
+                        use_container_width=True,
+                        disabled=not huesped_id  # Deshabilitar si no hay huésped
+                    )
                     
                     if submitted:
-                        # Validaciones
-                        if not huesped_id and not all([nombre, apellido, documento, telefono]):
-                            st.error("Complete todos los campos obligatorios (*) o busque un huésped existente")
-                        else:
-                            # ===== NUEVA VALIDACIÓN DE CAPACIDAD =====
-                            total_personas = adultos + ninos
-                            capacidad_maxima = habitacion.get('capacidad_maxima', 0)
-                            
-                            if total_personas > capacidad_maxima:
-                                st.error(f"⚠️ La habitación {habitacion['numero']} ({habitacion['tipo_nombre']}) tiene capacidad máxima de {capacidad_maxima} personas. Has seleccionado {total_personas} personas.")
-                                st.stop()
-                            
-                            # Crear huésped si no existe
-                            if not huesped_id:
-                                nuevo = HuespedController.crear_huesped({
-                                    'nombre': nombre, 'apellido': apellido,
-                                    'tipo_documento': 'DNI', 'numero_documento': documento,
-                                    'email': email, 'telefono': telefono
-                                })
-                                if nuevo['success']:
-                                    huesped_id = nuevo['huesped_id']
-                                else:
-                                    st.error(nuevo['error'])
-                                    st.stop()
-                            
-                            # Crear reserva
-                            resultado = ReservaController.crear_reserva(
-                                {
-                                    'huesped_id': huesped_id,
-                                    'fecha_check_in': st.session_state.fecha_check_in_actual,
-                                    'fecha_check_out': st.session_state.fecha_check_out_actual,
-                                    'numero_adultos': adultos,
-                                    'numero_ninos': ninos,
-                                    'habitacion_id': habitacion['id'],
-                                    'tarifa_total': total_estancia,
-                                    'notas': notas
-                                },
-                                st.session_state.user['id']
+                        # Validación: huésped obligatorio
+                        if not huesped_id:
+                            st.error("❌ Debes seleccionar un huésped existente para confirmar la reserva.")
+                            st.stop()
+
+                        # ===== VALIDACIÓN DE CAPACIDAD =====
+                        total_personas = adultos + ninos
+                        capacidad_maxima = habitacion.get('capacidad_maxima', 0)
+                        
+                        if total_personas > capacidad_maxima:
+                            st.error(
+                                f"⚠️ La habitación {habitacion['numero']} ({habitacion['tipo_nombre']}) "
+                                f"tiene capacidad máxima de {capacidad_maxima} personas. "
+                                f"Has seleccionado {total_personas} personas."
                             )
-                            
-                            if resultado['success']:
-                                st.success(f"✅ Reserva creada — Código: **{resultado['codigo_reserva']}**")
-                                logger.info(f"Reserva creada: {resultado['codigo_reserva']}")
-                                st.balloons()
-                                # Limpiar después de reserva exitosa
-                                st.session_state.busqueda_realizada = False
-                                st.session_state.busqueda_huesped_realizada = False
-                                st.session_state.habitacion_idx = 0
-                                # Limpiar caché de reservas activas
-                                if 'reservas_activas_cache' in st.session_state:
-                                    st.session_state.reservas_activas_cache = None
-                                st.rerun()
-                            else:
-                                st.error(f"Error: {resultado['error']}")
+                            st.stop()
+                        
+                        # Crear reserva
+                        resultado = ReservaController.crear_reserva(
+                            {
+                                'huesped_id': huesped_id,
+                                'fecha_check_in': st.session_state.fecha_check_in_actual,
+                                'fecha_check_out': st.session_state.fecha_check_out_actual,
+                                'numero_adultos': adultos,
+                                'numero_ninos': ninos,
+                                'habitacion_id': habitacion['id'],
+                                'tarifa_total': total_estancia,
+                                'notas': notas
+                            },
+                            st.session_state.user['id']
+                        )
+                        
+                        if resultado['success']:
+                            st.success(f"✅ Reserva creada — Código: **{resultado['codigo_reserva']}**")
+                            logger.info(f"Reserva creada: {resultado['codigo_reserva']}")
+                            st.balloons()
+                            # Limpiar después de reserva exitosa
+                            st.session_state.busqueda_realizada = False
+                            st.session_state.busqueda_huesped_realizada = False
+                            st.session_state.habitacion_idx = 0
+                            if 'reservas_activas_cache' in st.session_state:
+                                st.session_state.reservas_activas_cache = None
+                            st.rerun()
+                        else:
+                            st.error(f"Error: {resultado['error']}")
             else:
                 _card_info("ℹ️ No tienes permisos para crear reservas. Consulta con un supervisor.", "info")
         else:
@@ -650,7 +656,6 @@ def mostrar_reservas_activas():
     puede_ver_factura = perm_checker.can(Permission.INVOICE_VIEW)
 
     # ===== USAR CACHÉ PARA OPTIMIZAR =====
-    # Si no hay caché o se forzó recarga, obtener datos frescos
     if st.session_state.reservas_activas_cache is None:
         reservas = Reserva.get_activas()
         st.session_state.reservas_activas_cache = reservas
@@ -662,15 +667,12 @@ def mostrar_reservas_activas():
         df['fecha_check_in']  = pd.to_datetime(df['fecha_check_in']).dt.strftime('%d/%m/%Y')
         df['fecha_check_out'] = pd.to_datetime(df['fecha_check_out']).dt.strftime('%d/%m/%Y')
 
-        # Filtrar columnas según permisos
         columnas_base = ['codigo_reserva','huesped_nombre','huesped_apellido',
                         'fecha_check_in','fecha_check_out','habitacion_numero','estado']
         
         if perm_checker.can(Permission.BOOKING_VIEW_ALL):
-            # Puede ver todas las reservas
             df_display = df[columnas_base].copy()
         else:
-            # Solo ve reservas propias o básicas
             if 'created_by' in df.columns:
                 df = df[df['created_by'] == st.session_state.user['id']]
             df_display = df[columnas_base].copy()
@@ -696,49 +698,56 @@ def mostrar_reservas_activas():
                 use_container_width=True, hide_index=True
             )
 
-        # Acciones según permisos
         _seccion("⚡", "Acciones")
         col1, col2, col3 = st.columns(3)
+
+        # Inicializar clave para limpiar el buscador
+        if 'buscar_reserva_counter' not in st.session_state:
+            st.session_state.buscar_reserva_counter = 0
         
         with col1:
-            codigo_buscar = st.text_input("Buscar reserva por código", key="buscar_reserva_accion")
+            codigo_buscar = st.text_input(
+                "Buscar reserva por código",
+                key=f"buscar_reserva_accion_{st.session_state.buscar_reserva_counter}"
+            )
         
         if codigo_buscar:
             reserva = Reserva.get_by_codigo(codigo_buscar)
-            if reserva:
+            if not reserva:
+                _card_info(f"⚠️ No se encontró ninguna reserva con el código <strong>{codigo_buscar}</strong>.", "warning")
+            elif reserva['estado'] == 'cancelada':
+                _card_info(
+                    f"⚠️ La reserva <strong>{codigo_buscar}</strong> está <strong>CANCELADA</strong> y no puede ser gestionada.",
+                    "warning"
+                )
+                reserva = None
+            
+            if reserva and reserva['estado'] == 'completada':
+                _card_info(
+                    f"ℹ️ La reserva <strong>{codigo_buscar}</strong> está completada. "
+                    f"Para ver su factura ve a la pestaña <strong>🧾 Facturas</strong>.", "info"
+                )
+
+            if reserva and reserva['estado'] in ('confirmada', 'en_curso'):
                 _card_info(f"✅ Reserva encontrada: <strong>{reserva['huesped_nombre']} {reserva['huesped_apellido']}</strong>", "success")
                 
-                # Mostrar acciones disponibles
-                col_a, col_b, col_c = st.columns(3)
+                col_a, col_b = st.columns(2)
                 
                 with col_a:
                     if puede_editar:
                         if st.button("✏️ Editar Reserva", key=f"editar_{reserva['id']}", use_container_width=True):
                             st.session_state[f"show_edit_{reserva['id']}"] = not st.session_state.get(f"show_edit_{reserva['id']}", False)
-                            # Cerrar otros expanders
                             st.session_state[f"show_cancel_{reserva['id']}"] = False
-                            st.session_state[f"show_factura_{reserva['id']}"] = False
                             st.rerun()
                 
                 with col_b:
                     if puede_cancelar:
                         if st.button("❌ Cancelar Reserva", key=f"cancelar_{reserva['id']}", use_container_width=True):
                             st.session_state[f"show_cancel_{reserva['id']}"] = not st.session_state.get(f"show_cancel_{reserva['id']}", False)
-                            # Cerrar otros expanders
                             st.session_state[f"show_edit_{reserva['id']}"] = False
-                            st.session_state[f"show_factura_{reserva['id']}"] = False
                             st.rerun()
                 
-                with col_c:
-                    if puede_ver_factura:
-                        if st.button("🧾 Ver Factura", key=f"factura_{reserva['id']}", use_container_width=True):
-                            st.session_state[f"show_factura_{reserva['id']}"] = not st.session_state.get(f"show_factura_{reserva['id']}", False)
-                            # Cerrar otros expanders
-                            st.session_state[f"show_edit_{reserva['id']}"] = False
-                            st.session_state[f"show_cancel_{reserva['id']}"] = False
-                            st.rerun()
-                
-                # ===== EDITAR RESERVA (CORREGIDO - AHORA ACTUALIZA BD Y REFRESCA TABLA) =====
+                # ===== EDITAR RESERVA =====
                 if st.session_state.get(f"show_edit_{reserva['id']}", False):
                     with st.expander(f"✏️ Editar reserva {reserva['codigo_reserva']}", expanded=True):
                         with st.form(f"form_editar_{reserva['id']}"):
@@ -747,7 +756,7 @@ def mostrar_reservas_activas():
                                 nueva_fecha_in = st.date_input(
                                     "Nueva fecha check-in", 
                                     value=reserva['fecha_check_in'],
-                                    min_value=date.today(),
+                                    min_value=min(reserva['fecha_check_in'], date.today()),
                                     key=f"edit_in_{reserva['id']}"
                                 )
                                 nuevos_adultos = st.number_input(
@@ -760,7 +769,7 @@ def mostrar_reservas_activas():
                                 nueva_fecha_out = st.date_input(
                                     "Nueva fecha check-out", 
                                     value=reserva['fecha_check_out'],
-                                    min_value=nueva_fecha_in + timedelta(days=1),
+                                    min_value=min(reserva['fecha_check_out'], nueva_fecha_in + timedelta(days=1)),
                                     key=f"edit_out_{reserva['id']}"
                                 )
                                 nuevos_ninos = st.number_input(
@@ -772,14 +781,12 @@ def mostrar_reservas_activas():
                             
                             motivo_edicion = st.text_area("Motivo de la modificación", key=f"motivo_edit_{reserva['id']}")
                             
-                            # CORRECCIÓN: Convertir Decimal a float
                             dias = (nueva_fecha_out - nueva_fecha_in).days
                             tarifa_original = float(reserva['tarifa_total']) if hasattr(reserva['tarifa_total'], 'item') else float(reserva['tarifa_total'])
-                            nueva_tarifa = tarifa_original  # Simplificado
+                            nueva_tarifa = tarifa_original
                             
                             st.info(f"Tarifa original: S/ {tarifa_original:,.2f} | Nueva tarifa estimada: S/ {nueva_tarifa:,.2f}")
                             
-                            # Columnas para botones
                             _, col_confirm, _ = st.columns([1, 4, 1])
                             with col_confirm:
                                 confirmar = st.form_submit_button("✅ Confirmar cambios", type="primary", use_container_width=True)
@@ -788,7 +795,26 @@ def mostrar_reservas_activas():
                                 if not motivo_edicion:
                                     st.error("Debes ingresar un motivo para la modificación")
                                 else:
-                                    # ===== VERIFICAR DISPONIBILIDAD ANTES DE ACTUALIZAR =====
+                                    # ===== VALIDACIÓN DE CAPACIDAD =====
+                                    total_personas = nuevos_adultos + nuevos_ninos
+                                    with db.get_cursor() as cursor:
+                                        cursor.execute("""
+                                            SELECT th.capacidad_maxima
+                                            FROM habitaciones h
+                                            JOIN tipos_habitacion th ON h.tipo_habitacion_id = th.id
+                                            WHERE h.id = %s
+                                        """, (reserva['habitacion_id'],))
+                                        hab_info = cursor.fetchone()
+                                    
+                                    capacidad_maxima = hab_info['capacidad_maxima'] if hab_info else 0
+                                    if total_personas > capacidad_maxima:
+                                        st.error(
+                                            f"⚠️ La habitación tiene capacidad máxima de {capacidad_maxima} personas. "
+                                            f"Has ingresado {total_personas} ({nuevos_adultos} adultos + {nuevos_ninos} niños)."
+                                        )
+                                        st.stop()
+
+                                    # ===== VALIDACIÓN DE DISPONIBILIDAD =====
                                     with db.get_cursor() as cursor:
                                         cursor.execute("""
                                             SELECT verificar_disponibilidad(%s, %s, %s, %s) as disponible
@@ -799,7 +825,6 @@ def mostrar_reservas_activas():
                                             st.error("❌ La habitación no está disponible para las nuevas fechas seleccionadas")
                                             st.stop()
                                     
-                                    # ===== ACTUALIZACIÓN REAL EN BD =====
                                     try:
                                         with db.get_cursor() as cursor:
                                             cursor.execute("""
@@ -815,24 +840,20 @@ def mostrar_reservas_activas():
                                             """, (nueva_fecha_in, nueva_fecha_out, nuevos_adultos, nuevos_ninos, 
                                                   motivo_edicion, reserva['id']))
                                             
-                                            # Registrar en historial
                                             cursor.execute("""
                                                 INSERT INTO historial_estados_reserva 
                                                 (reserva_id, estado_anterior, estado_nuevo, usuario_id, motivo)
                                                 VALUES (%s, %s, %s, %s, %s)
                                             """, (reserva['id'], reserva['estado'], reserva['estado'], 
                                                   st.session_state.user['id'], motivo_edicion))
-                                            
-                                            st.success("✅ Reserva modificada exitosamente")
-                                            st.info(f"Cambios guardados: {nuevos_adultos} adultos, {nuevos_ninos} niños")
-                                            
-                                            # ===== LIMPIAR ESTADO Y FORZAR RECARGA DE DATOS =====
-                                            st.session_state[f"show_edit_{reserva['id']}"] = False
-                                            
-                                            # 👇 FORZAR RECARGA DE LA TABLA
-                                            st.session_state.reservas_activas_cache = None
-                                            
-                                            st.rerun()
+                                        
+                                        # Fuera del with para asegurar commit antes del rerun
+                                        st.success("✅ Reserva modificada exitosamente")
+                                        st.session_state[f"show_edit_{reserva['id']}"] = False
+                                        st.session_state.reservas_activas_cache = None
+                                        st.session_state.buscar_reserva_counter += 1
+                                        time.sleep(0.3)
+                                        st.rerun()
                                     except Exception as e:
                                         st.error(f"Error al actualizar: {str(e)}")
                 
@@ -842,12 +863,10 @@ def mostrar_reservas_activas():
                         with st.form(f"form_cancelar_{reserva['id']}"):
                             motivo = st.text_area("Motivo de cancelación", key=f"motivo_{reserva['id']}")
                             
-                            # Solo admin/gerente ven opción de reembolso
                             aplicar_reembolso = False
                             if perm_checker.can(Permission.BOOKING_CANCEL_REFUND):
                                 aplicar_reembolso = st.checkbox("Aplicar reembolso", key=f"reembolso_{reserva['id']}")
                             
-                            # Columnas con proporciones
                             _, col_confirm, _ = st.columns([1, 4, 1])
                             with col_confirm:
                                 confirmar = st.form_submit_button("✅ Confirmar cancelación", type="primary", use_container_width=True)
@@ -866,189 +885,13 @@ def mostrar_reservas_activas():
                                         st.success("✅ Reserva cancelada exitosamente")
                                         st.balloons()
                                         st.session_state[f"show_cancel_{reserva['id']}"] = False
-                                        # Forzar recarga de la tabla
                                         st.session_state.reservas_activas_cache = None
+                                        # Limpiar campo de búsqueda
+                                        st.session_state.buscar_reserva_counter += 1
                                         st.rerun()
                                     else:
                                         st.error(f"Error: {resultado['error']}")
                 
-                # ===== VER FACTURA (CORREGIDO - AHORA SE ACTUALIZA DESPUÉS DE CREAR) =====
-                if st.session_state.get(f"show_factura_{reserva['id']}", False):
-                    with st.expander(f"🧾 Factura de {reserva['codigo_reserva']}", expanded=True):
-                        # Buscar factura existente - SIEMPRE CONSULTA FRESCA
-                        with db.get_cursor() as cursor:
-                            cursor.execute("""
-                                SELECT f.*, df.concepto, df.cantidad, df.precio_unitario, df.importe, df.tipo,
-                                       h.nombre as huesped_nombre, h.apellido as huesped_apellido,
-                                       h.numero_documento as huesped_documento
-                                FROM facturas f
-                                LEFT JOIN detalle_factura df ON f.id = df.factura_id
-                                JOIN huespedes h ON f.huesped_id = h.id
-                                WHERE f.reserva_id = %s
-                                ORDER BY f.id, df.id
-                            """, (reserva['id'],))
-                            facturas_data = cursor.fetchall()
-                        
-                        if facturas_data:
-                            # Mostrar factura existente
-                            factura = facturas_data[0]
-                            
-                            # Información de la factura
-                            col1, col2 = st.columns(2)
-                            with col1:
-                                st.markdown(f"**Número:** {factura['numero_factura']}")
-                                st.markdown(f"**Fecha emisión:** {pd.to_datetime(factura['fecha_emision']).strftime('%d/%m/%Y %H:%M')}")
-                                st.markdown(f"**Estado:** {factura['estado'].upper()}")
-                            with col2:
-                                st.markdown(f"**Huésped:** {factura['huesped_nombre']} {factura['huesped_apellido']}")
-                                st.markdown(f"**Documento:** {factura['huesped_documento']}")
-                                if factura.get('metodo_pago'):
-                                    st.markdown(f"**Método pago:** {factura['metodo_pago'].capitalize()}")
-                            
-                            st.markdown("---")
-                            st.markdown("**DETALLE**")
-                            
-                            # Crear tabla de detalle
-                            detalle_items = []
-                            for item in facturas_data:
-                                if item.get('concepto'):
-                                    detalle_items.append({
-                                        'Concepto': item['concepto'],
-                                        'Cantidad': item['cantidad'],
-                                        'P. Unitario': f"S/ {float(item['precio_unitario']):,.2f}",
-                                        'Importe': f"S/ {float(item['importe']):,.2f}"
-                                    })
-                            
-                            if detalle_items:
-                                df_detalle = pd.DataFrame(detalle_items)
-                                st.dataframe(df_detalle, use_container_width=True, hide_index=True)
-                            
-                            # Mostrar totales
-                            col_t1, col_t2, col_t3 = st.columns(3)
-                            with col_t1:
-                                st.metric("Subtotal", f"S/ {float(factura['subtotal']):,.2f}")
-                            with col_t2:
-                                st.metric("Impuestos", f"S/ {float(factura['impuestos']):,.2f}")
-                            with col_t3:
-                                st.metric("TOTAL", f"S/ {float(factura['total']):,.2f}")
-                            
-                            # Botón para generar PDF
-                            col_pdf, col_close = st.columns(2)
-                            with col_pdf:
-                                if st.button("📄 Generar Factura PDF", key=f"pdf_{reserva['id']}", use_container_width=True):
-                                    with st.spinner("Generando PDF..."):
-                                        pdf = PDFGenerator()
-                                        
-                                        # Preparar datos para el PDF
-                                        factura_data = {
-                                            'numero_factura': factura['numero_factura'],
-                                            'fecha_emision': factura['fecha_emision'],
-                                            'huesped_nombre': factura['huesped_nombre'],
-                                            'huesped_apellido': factura['huesped_apellido'],
-                                            'huesped_documento': factura['huesped_documento'],
-                                            'reserva_id': reserva['id'],
-                                            'codigo_reserva': reserva['codigo_reserva'],
-                                            'subtotal': float(factura['subtotal']),
-                                            'impuestos': float(factura['impuestos']),
-                                            'total': float(factura['total']),
-                                            'metodo_pago': factura.get('metodo_pago'),
-                                            'notas': factura.get('notas')
-                                        }
-                                        
-                                        # Detalle items
-                                        detalle_items_pdf = []
-                                        for item in facturas_data:
-                                            if item.get('concepto'):
-                                                detalle_items_pdf.append({
-                                                    'concepto': item['concepto'],
-                                                    'cantidad': item['cantidad'],
-                                                    'precio_unitario': float(item['precio_unitario']),
-                                                    'importe': float(item['importe'])
-                                                })
-                                        
-                                        pdf.create_invoice_pdf(factura_data, detalle_items_pdf)
-                                        pdf_data = _get_pdf_data(pdf)
-                                        
-                                        st.download_button(
-                                            "📥 Descargar Factura PDF", 
-                                            data=pdf_data,
-                                            file_name=f"factura_{factura['numero_factura']}.pdf",
-                                            mime="application/pdf",
-                                            key=f"download_{reserva['id']}"
-                                        )
-                            with col_close:
-                                if st.button("❌ Cerrar", key=f"close_factura_{reserva['id']}", use_container_width=True):
-                                    st.session_state[f"show_factura_{reserva['id']}"] = False
-                                    st.rerun()
-                        else:
-                            # No hay factura, opción para crear una
-                            st.info("No hay factura asociada a esta reserva")
-                            
-                            # CORRECCIÓN: Convertir Decimal a float
-                            dias = (reserva['fecha_check_out'] - reserva['fecha_check_in']).days
-                            subtotal = float(reserva['tarifa_total']) if hasattr(reserva['tarifa_total'], 'item') else float(reserva['tarifa_total'])
-                            impuestos = subtotal * 0.18
-                            total = subtotal + impuestos
-                            
-                            with st.form(f"form_crear_factura_{reserva['id']}"):
-                                st.markdown("**Crear nueva factura**")
-                                
-                                col1, col2 = st.columns(2)
-                                with col1:
-                                    st.markdown(f"**Subtotal:** S/ {subtotal:,.2f}")
-                                    st.markdown(f"**Días:** {dias}")
-                                with col2:
-                                    st.markdown(f"**Impuestos (18%):** S/ {impuestos:,.2f}")
-                                    st.markdown(f"**TOTAL:** S/ {total:,.2f}")
-                                
-                                metodo_pago = st.selectbox(
-                                    "Método de pago",
-                                    options=["", "efectivo", "tarjeta", "transferencia"],
-                                    key=f"metodo_pago_{reserva['id']}"
-                                )
-                                
-                                _, col_crear, _ = st.columns([1, 4, 1])
-                                with col_crear:
-                                    crear = st.form_submit_button("✅ Crear Factura", type="primary", use_container_width=True)
-                                
-                                if crear:
-                                    # Insertar nueva factura
-                                    with db.get_cursor() as cursor:
-                                        # Generar número de factura
-                                        cursor.execute("SELECT nextval('facturas_numero_seq')")
-                                        factura_id = cursor.fetchone()['nextval']
-                                        numero = f"FAC-{datetime.now().strftime('%Y%m%d')}-{factura_id}"
-                                        
-                                        cursor.execute("""
-                                            INSERT INTO facturas 
-                                            (numero_factura, huesped_id, reserva_id, fecha_emision,
-                                             subtotal, impuestos, total, estado, metodo_pago)
-                                            VALUES (%s, %s, %s, CURRENT_TIMESTAMP, %s, %s, %s, %s, %s)
-                                            RETURNING id
-                                        """, (numero, reserva['huesped_id'], reserva['id'],
-                                              subtotal, impuestos, total,
-                                              'pagada' if metodo_pago else 'pendiente',
-                                              metodo_pago if metodo_pago else None))
-                                        
-                                        factura_id = cursor.fetchone()['id']
-                                        
-                                        # Insertar detalle
-                                        cursor.execute("""
-                                            INSERT INTO detalle_factura 
-                                            (factura_id, concepto, cantidad, precio_unitario, importe, tipo)
-                                            VALUES (%s, %s, %s, %s, %s, %s)
-                                        """, (factura_id, 
-                                              f"Alojamiento - {dias} noches - Hab {reserva['habitacion_numero']}", 
-                                              1, subtotal, subtotal, 'alojamiento'))
-                                        
-                                        st.success(f"✅ Factura {numero} creada correctamente")
-                                        
-                                        # ===== CORRECCIÓN IMPORTANTE =====
-                                        # Cerrar el expander actual y forzar recarga
-                                        st.session_state[f"show_factura_{reserva['id']}"] = False
-                                        # Pequeña pausa para asegurar que la BD se actualice
-                                        time.sleep(0.5)
-                                        st.rerun()
             else:
                 _card_info("⚠️ Reserva no encontrada", "warning")
     else:
@@ -1062,17 +905,14 @@ def mostrar_alojados_ahora():
     """Muestra los huéspedes que están actualmente en el hotel"""
     _seccion("🏨", "Huéspedes Alojados Ahora")
     
-    # Obtener huéspedes alojados
     alojados = Reserva.get_alojados_ahora()
     
     if alojados:
         df = pd.DataFrame(alojados)
         
-        # Formatear fechas
         df['fecha_check_in'] = pd.to_datetime(df['fecha_check_in']).dt.strftime('%d/%m/%Y %H:%M')
         df['fecha_check_out_estimado'] = pd.to_datetime(df['fecha_check_out']).dt.strftime('%d/%m/%Y')
         
-        # Preparar columnas para mostrar
         df_display = df[['codigo_reserva', 'huesped_nombre', 'huesped_apellido',
                          'habitacion_numero', 'fecha_check_in', 'fecha_check_out_estimado']].copy()
         df_display.columns = ['Código', 'Nombre', 'Apellido', 'Habitación', 
@@ -1080,24 +920,19 @@ def mostrar_alojados_ahora():
         
         st.dataframe(df_display, use_container_width=True, hide_index=True)
         
-        # Estadísticas
         col1, col2, col3 = st.columns(3)
         with col1:
             st.metric("Total huéspedes alojados", len(alojados))
         with col2:
-            # Habitaciones ocupadas únicas
             habitaciones_ocupadas = df['habitacion_id'].nunique() if 'habitacion_id' in df.columns else len(alojados)
             st.metric("Habitaciones ocupadas", habitaciones_ocupadas)
         with col3:
-            # Próximos check-outs (mañana)
             manana = date.today() + timedelta(days=1)
             prox_checkouts = df[pd.to_datetime(df['fecha_check_out']).dt.date == manana].shape[0] if 'fecha_check_out' in df.columns else 0
             st.metric("Check-outs mañana", prox_checkouts)
         
-        # Opción para hacer check-out rápido
         _seccion("⚡", "Check-out Rápido")
         
-        # Crear lista de opciones para el selectbox
         opciones_checkout = []
         for _, row in df.iterrows():
             opciones_checkout.append(
@@ -1112,17 +947,12 @@ def mostrar_alojados_ahora():
             with col_btn:
                 st.markdown("<br>", unsafe_allow_html=True)
                 if st.button("🔴 Procesar Check-out", type="primary", use_container_width=True):
-                    # Extraer código de reserva
                     codigo = seleccion.split(" - ")[0]
-                    
-                    # Buscar la reserva
                     reserva = Reserva.get_by_codigo(codigo)
                     if reserva:
-                        # Guardar en sesión para mostrar el expander
                         st.session_state[f"show_checkout_{reserva['id']}"] = True
                         st.rerun()
             
-            # Mostrar formulario de check-out si se seleccionó
             for _, row in df.iterrows():
                 if st.session_state.get(f"show_checkout_{row['id']}", False):
                     with st.expander(f"🔴 Check-out: {row['codigo_reserva']} - {row['huesped_nombre']} {row['huesped_apellido']}", expanded=True):
@@ -1133,13 +963,15 @@ def mostrar_alojados_ahora():
                             
                             observaciones = st.text_area("Observaciones del check-out", key=f"obs_{row['id']}")
                             
-                            # Opciones de descuento según permisos
                             perm_checker = st.session_state.permission_checker
                             if perm_checker.can(Permission.INVOICE_DISCOUNT):
                                 aplicar_descuento = st.checkbox("Aplicar descuento", key=f"desc_{row['id']}")
-                                if aplicar_descuento:
-                                    max_descuento = 20 if not perm_checker.can(Permission.INVOICE_DISCOUNT_HIGH) else 50
-                                    descuento = st.slider("Porcentaje de descuento", 0, max_descuento, 0, key=f"desc_slider_{row['id']}")
+                                max_descuento = 20 if not perm_checker.can(Permission.INVOICE_DISCOUNT_HIGH) else 50
+                                descuento = st.slider(
+                                    "Porcentaje de descuento", 0, max_descuento, 0,
+                                    key=f"desc_slider_{row['id']}",
+                                    disabled=not aplicar_descuento
+                                )
                             
                             col_conf, col_canc = st.columns(2)
                             with col_conf:
@@ -1191,7 +1023,6 @@ def mostrar_check_in_out():
         )
         
         if puede_checkin:
-            # Usar contador para limpiar input
             checkin_key = f"checkin_codigo_{st.session_state.checkin_counter}"
             
             with st.form("form_checkin"):
@@ -1208,7 +1039,6 @@ def mostrar_check_in_out():
                             if resultado['success']:
                                 st.success("✅ Check-in realizado exitosamente")
                                 st.session_state.checkin_counter += 1
-                                # Limpiar caché de reservas activas
                                 st.session_state.reservas_activas_cache = None
                                 st.rerun()
                             else:
@@ -1238,9 +1068,12 @@ def mostrar_check_in_out():
                 
                 if perm_checker.can(Permission.INVOICE_DISCOUNT):
                     aplicar_descuento = st.checkbox("Aplicar descuento", key="aplicar_descuento")
-                    if aplicar_descuento:
-                        max_descuento = 20 if not perm_checker.can(Permission.INVOICE_DISCOUNT_HIGH) else 50
-                        descuento = st.slider("Porcentaje de descuento", 0, max_descuento, 0, key="descuento_slider")
+                    max_descuento = 20 if not perm_checker.can(Permission.INVOICE_DISCOUNT_HIGH) else 50
+                    descuento = st.slider(
+                        "Porcentaje de descuento", 0, max_descuento, 0,
+                        key="descuento_slider",
+                        disabled=not aplicar_descuento
+                    )
                 
                 observaciones = st.text_area("Observaciones", key="checkout_obs")
                 submitted_out = st.form_submit_button("Procesar Check-out", type="primary", use_container_width=True)
@@ -1263,7 +1096,6 @@ def mostrar_check_in_out():
                                     st.success("✅ Check-out realizado exitosamente")
                                     st.info("Habitación liberada")
                                     st.session_state.checkout_counter += 1
-                                    # Limpiar caché de reservas activas
                                     st.session_state.reservas_activas_cache = None
                                     st.rerun()
                                 else:
@@ -1280,6 +1112,233 @@ def mostrar_check_in_out():
         st.markdown("</div>", unsafe_allow_html=True)
 
 
+def mostrar_facturas():
+    _seccion("🧾", "Facturas")
+
+    perm_checker = st.session_state.permission_checker
+
+    if 'buscar_factura_counter' not in st.session_state:
+        st.session_state.buscar_factura_counter = 0
+    if 'factura_creada_codigo' not in st.session_state:
+        st.session_state.factura_creada_codigo = ""
+
+    col1, _ = st.columns([2, 3])
+    with col1:
+        codigo_buscar = st.text_input(
+            "Buscar por código de reserva",
+            placeholder="Ej: RES000031",
+            value=st.session_state.factura_creada_codigo,
+            key=f"buscar_factura_{st.session_state.buscar_factura_counter}"
+        )
+    # Limpiar el código guardado después de usarlo
+    if st.session_state.factura_creada_codigo:
+        st.session_state.factura_creada_codigo = ""
+
+    if not codigo_buscar:
+        # Mostrar listado reciente de reservas completadas
+        _seccion("📋", "Reservas Completadas Recientes")
+        with db.get_cursor() as cursor:
+            cursor.execute("""
+                SELECT r.codigo_reserva, h.nombre, h.apellido, r.fecha_check_out,
+                       r.habitacion_id, hab.numero as habitacion_numero,
+                       r.tarifa_total,
+                       CASE WHEN f.id IS NOT NULL THEN true ELSE false END as tiene_factura
+                FROM reservas r
+                JOIN huespedes h ON r.huesped_id = h.id
+                JOIN habitaciones hab ON r.habitacion_id = hab.id
+                LEFT JOIN facturas f ON f.reserva_id = r.id
+                WHERE r.estado = 'completada'
+                ORDER BY r.fecha_check_out DESC
+                LIMIT 20
+            """)
+            recientes = cursor.fetchall()
+
+        if recientes:
+            df = pd.DataFrame(recientes)
+            df['tarifa_total'] = df['tarifa_total'].apply(lambda x: f"S/ {float(x):,.2f}")
+            df['tiene_factura'] = df['tiene_factura'].apply(lambda x: "✅ Sí" if x else "⚠️ No")
+            df['fecha_check_out'] = pd.to_datetime(df['fecha_check_out']).dt.strftime('%d/%m/%Y')
+            df_display = df[['codigo_reserva', 'nombre', 'apellido', 'habitacion_numero', 'fecha_check_out', 'tarifa_total', 'tiene_factura']].copy()
+            df_display.columns = ['Código', 'Nombre', 'Apellido', 'Habitación', 'Check-out', 'Tarifa', 'Factura']
+            st.dataframe(df_display, use_container_width=True, hide_index=True)
+        else:
+            _card_info("No hay reservas completadas aún.", "info")
+        return
+
+    # Buscar reserva
+    reserva = Reserva.get_by_codigo(codigo_buscar)
+
+    if not reserva:
+        _card_info(f"⚠️ No se encontró la reserva <strong>{codigo_buscar}</strong>.", "warning")
+        return
+
+    if reserva['estado'] not in ('completada', 'en_curso'):
+        _card_info(
+            f"ℹ️ La reserva <strong>{codigo_buscar}</strong> está en estado "
+            f"<strong>{reserva['estado'].upper()}</strong>. "
+            f"Las facturas se gestionan para reservas completadas o en curso.",
+            "info"
+        )
+        return
+
+    # Mostrar info de la reserva
+    _card_info(
+        f"🏨 <strong>{reserva['huesped_nombre']} {reserva['huesped_apellido']}</strong> &nbsp;|&nbsp; "
+        f"Hab. <strong>{reserva['habitacion_numero']}</strong> &nbsp;|&nbsp; "
+        f"Check-in: <strong>{reserva['fecha_check_in'].strftime('%d/%m/%Y')}</strong> &nbsp;|&nbsp; "
+        f"Check-out: <strong>{reserva['fecha_check_out'].strftime('%d/%m/%Y')}</strong>",
+        "info"
+    )
+
+    # Buscar factura existente
+    with db.get_cursor() as cursor:
+        cursor.execute("""
+            SELECT f.*, df.concepto, df.cantidad, df.precio_unitario, df.importe, df.tipo,
+                   h.nombre as huesped_nombre, h.apellido as huesped_apellido,
+                   h.numero_documento as huesped_documento
+            FROM facturas f
+            LEFT JOIN detalle_factura df ON f.id = df.factura_id
+            JOIN huespedes h ON f.huesped_id = h.id
+            WHERE f.reserva_id = %s
+            ORDER BY f.id, df.id
+        """, (reserva['id'],))
+        facturas_data = cursor.fetchall()
+
+    if facturas_data:
+        factura = facturas_data[0]
+        _card_info(f"✅ Factura <strong>{factura['numero_factura']}</strong> encontrada — Estado: <strong>{factura['estado'].upper()}</strong>", "success")
+
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown(f"**Número:** {factura['numero_factura']}")
+            st.markdown(f"**Fecha emisión:** {pd.to_datetime(factura['fecha_emision']).strftime('%d/%m/%Y %H:%M')}")
+            st.markdown(f"**Estado:** {factura['estado'].upper()}")
+        with col2:
+            st.markdown(f"**Huésped:** {factura['huesped_nombre']} {factura['huesped_apellido']}")
+            st.markdown(f"**Documento:** {factura['huesped_documento']}")
+            if factura.get('metodo_pago'):
+                st.markdown(f"**Método pago:** {factura['metodo_pago'].capitalize()}")
+
+        st.markdown("---")
+        st.markdown("**DETALLE**")
+
+        detalle_items = []
+        for item in facturas_data:
+            if item.get('concepto'):
+                detalle_items.append({
+                    'Concepto': item['concepto'],
+                    'Cantidad': item['cantidad'],
+                    'P. Unitario': f"S/ {float(item['precio_unitario']):,.2f}",
+                    'Importe': f"S/ {float(item['importe']):,.2f}"
+                })
+
+        if detalle_items:
+            df_detalle = pd.DataFrame(detalle_items)
+            st.dataframe(df_detalle, use_container_width=True, hide_index=True)
+
+        col_t1, col_t2, col_t3 = st.columns(3)
+        with col_t1:
+            st.metric("Subtotal", f"S/ {float(factura['subtotal']):,.2f}")
+        with col_t2:
+            st.metric("Impuestos (18%)", f"S/ {float(factura['impuestos']):,.2f}")
+        with col_t3:
+            st.metric("TOTAL", f"S/ {float(factura['total']):,.2f}")
+
+        if st.button("📄 Generar PDF", key=f"pdf_factura_{reserva['id']}", type="primary"):
+            with st.spinner("Generando PDF..."):
+                pdf = PDFGenerator()
+                factura_data = {
+                    'numero_factura': factura['numero_factura'],
+                    'fecha_emision': factura['fecha_emision'],
+                    'huesped_nombre': factura['huesped_nombre'],
+                    'huesped_apellido': factura['huesped_apellido'],
+                    'huesped_documento': factura['huesped_documento'],
+                    'reserva_id': reserva['id'],
+                    'codigo_reserva': reserva['codigo_reserva'],
+                    'subtotal': float(factura['subtotal']),
+                    'impuestos': float(factura['impuestos']),
+                    'total': float(factura['total']),
+                    'metodo_pago': factura.get('metodo_pago'),
+                    'notas': factura.get('notas')
+                }
+                detalle_items_pdf = []
+                for item in facturas_data:
+                    if item.get('concepto'):
+                        detalle_items_pdf.append({
+                            'concepto': item['concepto'],
+                            'cantidad': item['cantidad'],
+                            'precio_unitario': float(item['precio_unitario']),
+                            'importe': float(item['importe'])
+                        })
+                pdf.create_invoice_pdf(factura_data, detalle_items_pdf)
+                pdf_data = _get_pdf_data(pdf)
+                st.download_button(
+                    "📥 Descargar Factura PDF",
+                    data=pdf_data,
+                    file_name=f"factura_{factura['numero_factura']}.pdf",
+                    mime="application/pdf",
+                    key=f"download_factura_{reserva['id']}"
+                )
+
+    else:
+        # No tiene factura — crear una
+        _card_info("⚠️ Esta reserva no tiene factura. Puedes crearla aquí.", "warning")
+
+        dias = (reserva['fecha_check_out'] - reserva['fecha_check_in']).days
+        subtotal = float(reserva['tarifa_total']) if hasattr(reserva['tarifa_total'], 'item') else float(reserva['tarifa_total'])
+        impuestos = subtotal * 0.18
+        total = subtotal + impuestos
+
+        col_t1, col_t2, col_t3 = st.columns(3)
+        with col_t1:
+            st.metric("Subtotal", f"S/ {subtotal:,.2f}")
+        with col_t2:
+            st.metric("Impuestos (18%)", f"S/ {impuestos:,.2f}")
+        with col_t3:
+            st.metric("TOTAL", f"S/ {total:,.2f}")
+
+        with st.form(f"form_nueva_factura_{reserva['id']}"):
+            st.markdown(f"**{dias} noches — Hab. {reserva['habitacion_numero']}**")
+            metodo_pago = st.selectbox(
+                "Método de pago",
+                options=["", "efectivo", "tarjeta", "transferencia"],
+                key=f"metodo_nueva_{reserva['id']}"
+            )
+            _, col_crear, _ = st.columns([1, 2, 1])
+            with col_crear:
+                crear = st.form_submit_button("✅ Crear Factura", type="primary", use_container_width=True)
+
+            if crear:
+                with db.get_cursor() as cursor:
+                    cursor.execute("SELECT nextval('facturas_numero_seq')")
+                    factura_seq = cursor.fetchone()['nextval']
+                    numero = f"FAC-{datetime.now().strftime('%Y%m%d')}-{factura_seq}"
+                    cursor.execute("""
+                        INSERT INTO facturas
+                        (numero_factura, huesped_id, reserva_id, fecha_emision,
+                         subtotal, impuestos, total, estado, metodo_pago)
+                        VALUES (%s, %s, %s, CURRENT_TIMESTAMP, %s, %s, %s, %s, %s)
+                        RETURNING id
+                    """, (numero, reserva['huesped_id'], reserva['id'],
+                          subtotal, impuestos, total,
+                          'pagada' if metodo_pago else 'pendiente',
+                          metodo_pago if metodo_pago else None))
+                    factura_nueva_id = cursor.fetchone()['id']
+                    cursor.execute("""
+                        INSERT INTO detalle_factura
+                        (factura_id, concepto, cantidad, precio_unitario, importe, tipo)
+                        VALUES (%s, %s, %s, %s, %s, %s)
+                    """, (factura_nueva_id,
+                          f"Alojamiento - {dias} noches - Hab {reserva['habitacion_numero']}",
+                          1, subtotal, subtotal, 'alojamiento'))
+                st.success(f"✅ Factura {numero} creada correctamente")
+                # Guardar el código para mostrarlo después del rerun
+                st.session_state.factura_creada_codigo = codigo_buscar
+                time.sleep(0.5)
+                st.rerun()
+
+
+
 def mostrar_registro_huesped():
     _seccion("👤", "Registrar Nuevo Huésped")
     
@@ -1290,7 +1349,6 @@ def mostrar_registro_huesped():
         _card_info("⛔ No tienes permisos para registrar nuevos huéspedes", "danger")
         return
 
-    # Sistema de limpieza
     if 'huesped_counter' not in st.session_state:
         st.session_state.huesped_counter = 0
     

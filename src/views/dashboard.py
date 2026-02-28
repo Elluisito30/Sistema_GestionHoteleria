@@ -4,7 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta, date
 from config.database import db
-from utils.permissions import Permission  # 👈 NUEVO
+from utils.permissions import Permission
 
 # ── Paleta consistente con el sidebar ──────────────────────────────────────────
 C = {
@@ -48,6 +48,7 @@ PLOTLY_LAYOUT = dict(
     margin=dict(l=16, r=16, t=40, b=16),
 )
 
+
 def _card(contenido_html: str) -> None:
     st.markdown(
         f'<div style="background:{C["card_bg"]}; border:1px solid {C["border"]}; '
@@ -55,6 +56,7 @@ def _card(contenido_html: str) -> None:
         f'{contenido_html}</div>',
         unsafe_allow_html=True
     )
+
 
 def _seccion(emoji: str, titulo: str) -> None:
     st.markdown(
@@ -64,6 +66,7 @@ def _seccion(emoji: str, titulo: str) -> None:
         f'</div>',
         unsafe_allow_html=True
     )
+
 
 def _metrica(label: str, valor: str, delta: str = "", delta_ok: bool = True) -> None:
     delta_html = ""
@@ -85,14 +88,43 @@ def _metrica(label: str, valor: str, delta: str = "", delta_ok: bool = True) -> 
         unsafe_allow_html=True
     )
 
-def _check_permission(permission: Permission) -> bool:
-    """Helper para verificar permisos"""
-    perm_checker = st.session_state.get('permission_checker', None)
-    return perm_checker and perm_checker.can(permission)
+
+def _get_ocupacion_hoy() -> dict:
+    """Devuelve ocupadas, total y porcentaje de ocupación actual."""
+    with db.get_cursor() as cursor:
+        cursor.execute("""
+            SELECT
+                COUNT(DISTINCT CASE
+                    WHEN r.fecha_check_in <= CURRENT_DATE
+                    AND r.fecha_check_out > CURRENT_DATE
+                    THEN r.habitacion_id
+                END) as ocupadas_hoy,
+                COUNT(h.id) as total_habitaciones
+            FROM habitaciones h
+            LEFT JOIN reservas r ON h.id = r.habitacion_id
+                AND r.estado IN ('confirmada', 'completada')
+                AND r.fecha_check_in <= CURRENT_DATE
+                AND r.fecha_check_out > CURRENT_DATE
+            WHERE h.activa = true
+        """)
+        result = cursor.fetchone()
+    ocupadas  = result['ocupadas_hoy'] or 0
+    total     = result['total_habitaciones'] or 1
+    porcentaje = (ocupadas / total * 100)
+    return {'ocupadas': ocupadas, 'total': total, 'porcentaje': porcentaje}
+
+
+def _get_reservas_futuras() -> int:
+    """Reservas confirmadas con check-in en el futuro."""
+    with db.get_cursor() as cursor:
+        cursor.execute("""
+            SELECT COUNT(*) as total FROM reservas
+            WHERE estado = 'confirmada' AND fecha_check_in > CURRENT_DATE
+        """)
+        return cursor.fetchone()['total']
 
 
 def show():
-    # 👇 NUEVO: Obtener permission checker
     perm_checker = st.session_state.get('permission_checker', None)
     if not perm_checker:
         st.error("Error de permisos")
@@ -100,16 +132,10 @@ def show():
 
     st.markdown(f"""
     <style>
-    /* ── Fondo general ── */
     .stApp {{ background-color: #0d1b36; }}
 
-    /* ── Proteger sidebar ── */
-    [data-testid="stSidebar"] {{
-        background-color: #1a2744 !important;
-    }}
-    [data-testid="stSidebar"] * {{
-        color: #ffffff !important;
-    }}
+    [data-testid="stSidebar"] {{ background-color: #1a2744 !important; }}
+    [data-testid="stSidebar"] * {{ color: #ffffff !important; }}
     [data-testid="stSidebar"] .stRadio label {{
         color: #9DB4C7 !important;
         background: transparent !important;
@@ -130,13 +156,9 @@ def show():
         font-size: 0.85rem !important;
     }}
 
-    /* ── Texto markdown general ── */
     [data-testid="stMarkdownContainer"] p,
-    [data-testid="stMarkdownContainer"] li {{
-        color: {C['text']} !important;
-    }}
+    [data-testid="stMarkdownContainer"] li {{ color: {C['text']} !important; }}
 
-    /* ── Info box ── */
     [data-testid="stInfo"] {{
         background: rgba(91,141,184,0.12) !important;
         border: 1px solid rgba(91,141,184,0.3) !important;
@@ -145,14 +167,12 @@ def show():
     }}
     [data-testid="stInfo"] * {{ color: {C['text']} !important; }}
 
-    /* ── Dataframe ── */
     [data-testid="stDataFrame"] {{
         border: 1px solid {C['border']} !important;
         border-radius: 12px !important;
         overflow: hidden;
     }}
 
-    /* ── Plotly ── */
     .stPlotlyChart {{
         background: transparent !important;
         border-radius: 14px !important;
@@ -160,7 +180,6 @@ def show():
         overflow: hidden;
     }}
 
-    /* ── Badge de permisos ── */
     .permission-badge {{
         display: inline-block;
         background: rgba(91,141,184,0.15);
@@ -173,7 +192,6 @@ def show():
         margin-left: 0.5rem;
     }}
 
-    /* ── Divisores ── */
     hr {{ border-color: {C['border']} !important; }}
     </style>
     """, unsafe_allow_html=True)
@@ -185,39 +203,23 @@ def show():
         unsafe_allow_html=True
     )
 
-    # ═══════════════════════════════════════════════════════════════════════════
-    # KPIs PRINCIPALES - Difieren según rol
-    # ═══════════════════════════════════════════════════════════════════════════
-    
-    # 👇 NUEVO: KPIs según permisos
-    if perm_checker.can(Permission.DASHBOARD_VIEW_KPI_ALL):
-        # Admin y Gerente ven KPIs completos
-        col1, col2, col3, col4 = st.columns(4)
+    # ── Datos compartidos ──────────────────────────────────────────────────────
+    ocup             = _get_ocupacion_hoy()
+    reservas_futuras = _get_reservas_futuras()
 
-        with col1:
-            with db.get_cursor() as cursor:
-                cursor.execute("""
-                    SELECT
-                        COUNT(DISTINCT CASE
-                            WHEN fecha_check_in <= CURRENT_DATE
-                            AND fecha_check_out > CURRENT_DATE
-                            THEN habitacion_id
-                        END) as ocupadas_hoy,
-                        COUNT(*) as total_habitaciones
-                    FROM habitaciones h
-                    LEFT JOIN reservas r ON h.id = r.habitacion_id
-                        AND r.estado IN ('confirmada', 'completada')
-                        AND r.fecha_check_in <= CURRENT_DATE
-                        AND r.fecha_check_out > CURRENT_DATE
-                    WHERE h.activa = true
-                """)
-                result = cursor.fetchone()
-                ocupadas = result['ocupadas_hoy'] or 0
-                total = result['total_habitaciones']
-                porcentaje = (ocupadas / total * 100) if total > 0 else 0
-            _metrica("Ocupación Hoy", f"{ocupadas}/{total}", f"{porcentaje:.1f}%", porcentaje > 50)
+    # ═══════════════════════════════════════════════════════════════════════════
+    # KPIs PRINCIPALES
+    # ═══════════════════════════════════════════════════════════════════════════
+    col1, col2, col3, col4 = st.columns(4)
 
-        with col2:
+    with col1:
+        _metrica("Ocupación Hoy",
+                 f"{ocup['ocupadas']}/{ocup['total']}",
+                 f"{ocup['porcentaje']:.1f}%",
+                 ocup['porcentaje'] > 50)
+
+    with col2:
+        if perm_checker.can(Permission.DASHBOARD_VIEW_KPI_ALL):
             with db.get_cursor() as cursor:
                 cursor.execute("""
                     SELECT COALESCE(SUM(total), 0) as ingresos_hoy
@@ -226,91 +228,44 @@ def show():
                 """)
                 result = cursor.fetchone()
             _metrica("Ingresos Hoy", f"S/ {result['ingresos_hoy']:,.2f}")
-
-        with col3:
+        else:
             with db.get_cursor() as cursor:
                 cursor.execute("""
-                    SELECT COUNT(*) as check_ins_hoy
-                    FROM alojamientos WHERE DATE(fecha_check_in) = CURRENT_DATE
+                    SELECT COUNT(*) as total FROM alojamientos
+                    WHERE DATE(fecha_check_in) = CURRENT_DATE
                 """)
                 result = cursor.fetchone()
-            _metrica("Check-ins Hoy", str(result['check_ins_hoy']))
+            _metrica("Check-ins Hoy", str(result['total'] or 0))
 
-        with col4:
+    with col3:
+        if perm_checker.can(Permission.DASHBOARD_VIEW_KPI_ALL):
             with db.get_cursor() as cursor:
                 cursor.execute("""
-                    SELECT COUNT(*) as reservas_pendientes
-                    FROM reservas
-                    WHERE estado = 'confirmada' AND fecha_check_in > CURRENT_DATE
+                    SELECT COUNT(*) as total FROM alojamientos
+                    WHERE DATE(fecha_check_in) = CURRENT_DATE
                 """)
                 result = cursor.fetchone()
-            _metrica("Reservas Futuras", str(result['reservas_pendientes']))
-    
-    else:
-        # Recepcionista ve KPIs operativos básicos
-        col1, col2, col3, col4 = st.columns(4)
-
-        with col1:
+            _metrica("Check-ins Hoy", str(result['total'] or 0))
+        else:
             with db.get_cursor() as cursor:
                 cursor.execute("""
-                    SELECT
-                        COUNT(DISTINCT CASE
-                            WHEN fecha_check_in <= CURRENT_DATE
-                            AND fecha_check_out > CURRENT_DATE
-                            THEN habitacion_id
-                        END) as ocupadas_hoy,
-                        COUNT(*) as total_habitaciones
-                    FROM habitaciones h
-                    LEFT JOIN reservas r ON h.id = r.habitacion_id
-                        AND r.estado IN ('confirmada', 'completada')
-                        AND r.fecha_check_in <= CURRENT_DATE
-                        AND r.fecha_check_out > CURRENT_DATE
-                    WHERE h.activa = true
+                    SELECT COUNT(*) as total FROM alojamientos
+                    WHERE DATE(fecha_check_out) = CURRENT_DATE
                 """)
                 result = cursor.fetchone()
-                ocupadas = result['ocupadas_hoy'] or 0
-                total = result['total_habitaciones']
-                porcentaje = (ocupadas / total * 100) if total > 0 else 0
-            _metrica("Ocupación Hoy", f"{ocupadas}/{total}", f"{porcentaje:.1f}%", porcentaje > 50)
+            _metrica("Check-outs Hoy", str(result['total'] or 0))
 
-        with col2:
-            with db.get_cursor() as cursor:
-                cursor.execute("""
-                    SELECT COUNT(*) as check_ins_hoy
-                    FROM alojamientos WHERE DATE(fecha_check_in) = CURRENT_DATE
-                """)
-                result = cursor.fetchone()
-            _metrica("Check-ins Hoy", str(result['check_ins_hoy']))
-
-        with col3:
-            with db.get_cursor() as cursor:
-                cursor.execute("""
-                    SELECT COUNT(*) as check_outs_hoy
-                    FROM alojamientos WHERE DATE(fecha_check_out) = CURRENT_DATE
-                """)
-                result = cursor.fetchone()
-            _metrica("Check-outs Hoy", str(result['check_outs_hoy'] or 0))
-
-        with col4:
-            with db.get_cursor() as cursor:
-                cursor.execute("""
-                    SELECT COUNT(*) as reservas_pendientes
-                    FROM reservas
-                    WHERE estado = 'confirmada' AND fecha_check_in > CURRENT_DATE
-                """)
-                result = cursor.fetchone()
-            _metrica("Reservas Futuras", str(result['reservas_pendientes']))
+    with col4:
+        _metrica("Reservas Futuras", str(reservas_futuras))
 
     st.markdown("<div style='height:0.75rem;'></div>", unsafe_allow_html=True)
 
     # ═══════════════════════════════════════════════════════════════════════════
-    # KPIS SECUNDARIOS - Solo para admin/gerente
+    # KPIs SECUNDARIOS
     # ═══════════════════════════════════════════════════════════════════════════
-    
-    # 👇 NUEVO: KPIs secundarios según permisos
-    if perm_checker.can(Permission.DASHBOARD_VIEW_KPI_ALL):
-        col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns(3)
 
+    if perm_checker.can(Permission.DASHBOARD_VIEW_KPI_ALL):
         with col1:
             with db.get_cursor() as cursor:
                 cursor.execute("""
@@ -320,33 +275,25 @@ def show():
                     AND estado = 'completada'
                 """)
                 result = cursor.fetchone()
-                estancia = result['estancia_promedio'] or 0
-            _metrica("Estancia Promedio", f"{estancia:.1f} días")
+            _metrica("Estancia Promedio", f"{float(result['estancia_promedio'] or 0):.1f} días")
 
         with col2:
             with db.get_cursor() as cursor:
                 cursor.execute("""
-                    WITH habitaciones_stats AS (
-                        SELECT COUNT(*) as total_habitaciones FROM habitaciones WHERE activa = true
-                    ),
-                    ingresos_mes AS (
-                        SELECT COALESCE(SUM(total), 0) as ingresos FROM facturas
+                    WITH stats AS (
+                        SELECT
+                            (SELECT COUNT(*) FROM habitaciones WHERE activa = true) as total_hab,
+                            COALESCE(SUM(total), 0) as ingresos,
+                            EXTRACT(DAY FROM DATE_TRUNC('month', CURRENT_DATE + INTERVAL '1 month')
+                                - DATE_TRUNC('month', CURRENT_DATE)) as dias_mes
+                        FROM facturas
                         WHERE estado = 'pagada'
                         AND DATE_TRUNC('month', fecha_emision) = DATE_TRUNC('month', CURRENT_DATE)
                     )
-                    SELECT h.total_habitaciones, i.ingresos,
-                        EXTRACT(DAY FROM DATE_TRUNC('month', CURRENT_DATE + INTERVAL '1 month')
-                        - DATE_TRUNC('month', CURRENT_DATE)) as dias_mes
-                    FROM habitaciones_stats h, ingresos_mes i
+                    SELECT ingresos / NULLIF(total_hab * dias_mes, 0) as revpar FROM stats
                 """)
                 result = cursor.fetchone()
-                if result and result['total_habitaciones'] > 0:
-                    dias_mes = result['dias_mes'] or 30
-                    hab_disp = result['total_habitaciones'] * dias_mes
-                    revpar = result['ingresos'] / hab_disp if hab_disp > 0 else 0
-                else:
-                    revpar = 0
-            _metrica("RevPAR (Mes Actual)", f"S/ {revpar:,.2f}")
+            _metrica("RevPAR (Mes Actual)", f"S/ {float(result['revpar'] or 0):,.2f}")
 
         with col3:
             with db.get_cursor() as cursor:
@@ -357,43 +304,38 @@ def show():
                 """)
                 result = cursor.fetchone()
             _metrica("Ingresos del Mes", f"S/ {result['ingresos_mes']:,.2f}")
-    else:
-        # Recepcionista ve métricas operativas alternativas
-        col1, col2, col3 = st.columns(3)
 
+    else:
         with col1:
             with db.get_cursor() as cursor:
                 cursor.execute("""
-                    SELECT COUNT(*) as huespedes_hoy
-                    FROM alojamientos 
+                    SELECT COUNT(*) as total FROM alojamientos
                     WHERE DATE(fecha_check_in) = CURRENT_DATE
                 """)
                 result = cursor.fetchone()
-            _metrica("Huéspedes Hoy", str(result['huespedes_hoy'] or 0))
+            _metrica("Huéspedes Hoy", str(result['total'] or 0))
 
         with col2:
             with db.get_cursor() as cursor:
                 cursor.execute("""
-                    SELECT COUNT(*) as habitaciones_libres
-                    FROM habitaciones 
+                    SELECT COUNT(*) as total FROM habitaciones
                     WHERE estado_id = (SELECT id FROM estados_habitacion WHERE nombre = 'disponible')
                     AND activa = true
                 """)
                 result = cursor.fetchone()
-            _metrica("Habitaciones Libres", str(result['habitaciones_libres'] or 0))
+            _metrica("Habitaciones Libres", str(result['total'] or 0))
 
         with col3:
             with db.get_cursor() as cursor:
                 cursor.execute("""
-                    SELECT COUNT(*) as habitaciones_mantenimiento
-                    FROM habitaciones 
+                    SELECT COUNT(*) as total FROM habitaciones
                     WHERE estado_id = (SELECT id FROM estados_habitacion WHERE nombre = 'mantenimiento')
                 """)
                 result = cursor.fetchone()
-            _metrica("En Mantenimiento", str(result['habitaciones_mantenimiento'] or 0))
+            _metrica("En Mantenimiento", str(result['total'] or 0))
 
     # ═══════════════════════════════════════════════════════════════════════════
-    # GRÁFICOS - Difieren según rol
+    # GRÁFICOS
     # ═══════════════════════════════════════════════════════════════════════════
     st.markdown("<div style='height:0.5rem;'></div>", unsafe_allow_html=True)
     col1, col2 = st.columns(2)
@@ -419,33 +361,23 @@ def show():
 
         df = pd.DataFrame(datos)
         if not df.empty:
-            fig = px.line(
-                df, x='fecha', y='habitaciones_ocupadas',
-                markers=True,
-                color_discrete_sequence=[C['accent']],
-            )
+            fig = px.line(df, x='fecha', y='habitaciones_ocupadas', markers=True,
+                          color_discrete_sequence=[C['accent']])
             fig.update_traces(
                 line=dict(width=2.5, color=C['accent']),
                 marker=dict(size=8, color=C['primary'], line=dict(color=C['accent'], width=2)),
                 fill='tozeroy',
                 fillcolor='rgba(168,216,234,0.1)',
             )
-            fig.update_layout(
-                **PLOTLY_LAYOUT,
-                height=320,
-                xaxis_title="Fecha",
-                yaxis_title="Habitaciones",
-                showlegend=False,
-                title="",
-            )
+            fig.update_layout(**PLOTLY_LAYOUT, height=320,
+                              xaxis_title="Fecha", yaxis_title="Habitaciones",
+                              showlegend=False, title="")
             st.plotly_chart(fig, use_container_width=True)
         else:
             _card(f'<p style="color:{C["muted"]}; text-align:center; padding:2rem 0;">Sin datos disponibles</p>')
 
     with col2:
-        # 👇 NUEVO: Segundo gráfico según permisos
         if perm_checker.can(Permission.REPORT_VIEW_FINANCIAL):
-            # Admin y gerente ven ingresos por tipo de habitación
             _seccion("💰", "Ingresos por Tipo de Habitación")
             with db.get_cursor() as cursor:
                 cursor.execute("""
@@ -463,29 +395,20 @@ def show():
 
             if datos:
                 df = pd.DataFrame(datos)
-                colores = ['#5B8DB8','#A8D8EA','#9DB4C7','#68D391','#F6AD55','#FC8181']
-                fig = px.pie(
-                    df, values='ingresos', names='tipo_habitacion',
-                    color_discrete_sequence=colores,
-                    hole=0.45,
-                )
+                fig = px.pie(df, values='ingresos', names='tipo_habitacion', hole=0.45,
+                             color_discrete_sequence=['#5B8DB8','#A8D8EA','#9DB4C7',
+                                                      '#68D391','#F6AD55','#FC8181'])
                 fig.update_traces(
-                    textposition='inside',
-                    textinfo='percent+label',
+                    textposition='inside', textinfo='percent+label',
                     textfont=dict(color='white', size=12),
                     marker=dict(line=dict(color=C['dark'], width=2)),
                 )
-                fig.update_layout(
-                    **PLOTLY_LAYOUT,
-                    height=320,
-                    showlegend=True,
-                    title="",
-                )
+                fig.update_layout(**PLOTLY_LAYOUT, height=320, showlegend=True, title="")
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 _card(f'<p style="color:{C["muted"]}; text-align:center; padding:2rem 0;">Sin datos del último mes</p>')
+
         else:
-            # Recepcionista ve check-ins por día
             _seccion("✅", "Check-ins por Día")
             with db.get_cursor() as cursor:
                 cursor.execute("""
@@ -504,27 +427,20 @@ def show():
 
             if datos:
                 df = pd.DataFrame(datos)
-                fig = px.bar(
-                    df, x='fecha', y='check_ins',
-                    color_discrete_sequence=[C['success']],
-                )
+                fig = px.bar(df, x='fecha', y='check_ins',
+                             color_discrete_sequence=[C['success']])
                 fig.update_traces(
-                    marker=dict(color=C['success'], line=dict(color=C['accent'], width=1)),
+                    marker=dict(color=C['success'], line=dict(color=C['accent'], width=1))
                 )
-                fig.update_layout(
-                    **PLOTLY_LAYOUT,
-                    height=320,
-                    xaxis_title="Fecha",
-                    yaxis_title="Check-ins",
-                    showlegend=False,
-                    title="",
-                )
+                fig.update_layout(**PLOTLY_LAYOUT, height=320,
+                                  xaxis_title="Fecha", yaxis_title="Check-ins",
+                                  showlegend=False, title="")
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 _card(f'<p style="color:{C["muted"]}; text-align:center; padding:2rem 0;">Sin datos disponibles</p>')
 
     # ═══════════════════════════════════════════════════════════════════════════
-    # PRÓXIMOS CHECK-INS - Todos pueden ver
+    # PRÓXIMOS CHECK-INS
     # ═══════════════════════════════════════════════════════════════════════════
     _seccion("📅", "Próximos Check-ins — 7 días")
 
@@ -550,10 +466,7 @@ def show():
         df = pd.DataFrame(proximos)
         df['fecha_check_in']  = pd.to_datetime(df['fecha_check_in']).dt.strftime('%d/%m/%Y')
         df['fecha_check_out'] = pd.to_datetime(df['fecha_check_out']).dt.strftime('%d/%m/%Y')
-        st.dataframe(
-            df,
-            use_container_width=True,
-            hide_index=True,
+        st.dataframe(df, use_container_width=True, hide_index=True,
             column_config={
                 "codigo_reserva": "Código",
                 "huesped":        "Huésped",
@@ -561,8 +474,7 @@ def show():
                 "fecha_check_out":"Check-out",
                 "habitacion":     "Habitación",
                 "noches":         "Noches",
-            }
-        )
+            })
     else:
         st.markdown(
             f'<div style="background:rgba(91,141,184,0.1); border:1px solid rgba(91,141,184,0.3); '

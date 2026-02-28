@@ -12,7 +12,8 @@ from controllers.reserva_controller import ReservaController
 from controllers.factura_controller import FacturaController
 from utils.auth import Auth
 from utils.logger import logger
-from utils.permissions import Permission  # 👈 NUEVO
+from utils.permissions import Permission
+from utils.pdf_generator import PDFGenerator
 
 # ── Paleta (misma que el resto) ────────────────────────────────────────────────
 C = {
@@ -33,12 +34,22 @@ C = {
 }
 
 
+def _get_pdf_data(pdf):
+    """Convierte la salida del PDF a bytes para descargar"""
+    pdf_output = pdf.output(dest='S')
+    if isinstance(pdf_output, bytearray):
+        return bytes(pdf_output)
+    elif hasattr(pdf_output, 'encode'):
+        return pdf_output.encode('latin1')
+    else:
+        return pdf_output
+
+
 def _css():
     st.markdown(f"""
     <style>
     .stApp {{ background-color: #0d1b36; }}
 
-    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {{
         background: rgba(255,255,255,0.04);
         border-radius: 12px;
@@ -63,7 +74,6 @@ def _css():
     }}
     .stTabs [data-baseweb="tab-panel"] {{ padding-top: 1.25rem; }}
 
-    /* Labels */
     label, .stTextInput label, .stDateInput label,
     .stSelectbox label, .stNumberInput label,
     .stTextArea label, .stCheckbox label {{
@@ -74,7 +84,6 @@ def _css():
         letter-spacing: 0.04em;
     }}
 
-    /* Inputs */
     .stTextInput input, .stTextArea textarea,
     .stDateInput input, .stNumberInput input {{
         background: rgba(255,255,255,0.06) !important;
@@ -88,7 +97,6 @@ def _css():
         box-shadow: 0 0 0 2px rgba(91,141,184,0.2) !important;
     }}
 
-    /* Selectbox */
     .stSelectbox > div > div {{
         background: rgba(255,255,255,0.06) !important;
         border: 1px solid {C['border']} !important;
@@ -96,7 +104,6 @@ def _css():
         color: {C['text']} !important;
     }}
 
-    /* Radio */
     [data-testid="stSidebar"] .stRadio > div {{ gap: 0.25rem !important; }}
     .stRadio label {{
         background: rgba(255,255,255,0.04) !important;
@@ -110,7 +117,6 @@ def _css():
         font-weight: 500 !important;
     }}
 
-    /* Checkbox */
     .stCheckbox label {{
         color: {C['text']} !important;
         text-transform: none !important;
@@ -119,7 +125,6 @@ def _css():
         font-weight: 400 !important;
     }}
 
-    /* Botones */
     .stButton > button[kind="primary"],
     .stFormSubmitButton > button,
     .stDownloadButton > button {{
@@ -143,14 +148,11 @@ def _css():
         border-radius: 9px !important;
         font-weight: 500 !important;
     }}
-    
-    /* Botones deshabilitados */
     .stButton > button:disabled {{
         opacity: 0.5 !important;
         cursor: not-allowed !important;
     }}
 
-    /* Métricas */
     [data-testid="stMetric"] {{
         background: {C['card_bg']};
         border: 1px solid {C['border']};
@@ -169,7 +171,6 @@ def _css():
         font-weight: 700 !important;
     }}
 
-    /* Alerts */
     [data-testid="stSuccess"] {{
         background: rgba(104,211,145,0.12) !important;
         border: 1px solid rgba(104,211,145,0.3) !important;
@@ -195,14 +196,12 @@ def _css():
     }}
     [data-testid="stInfo"] * {{ color: {C['accent']} !important; }}
 
-    /* Dataframe */
     [data-testid="stDataFrame"] {{
         border: 1px solid {C['border']} !important;
         border-radius: 12px !important;
         overflow: hidden;
     }}
 
-    /* Markdown texto */
     [data-testid="stMarkdownContainer"] p,
     [data-testid="stMarkdownContainer"] li {{
         color: {C['text']} !important;
@@ -213,13 +212,8 @@ def _css():
 
     hr {{ border-color: {C['border']} !important; }}
 
-    /* ── Proteger sidebar ── */
-    [data-testid="stSidebar"] {{
-        background-color: #1a2744 !important;
-    }}
-    [data-testid="stSidebar"] * {{
-        color: #ffffff !important;
-    }}
+    [data-testid="stSidebar"] {{ background-color: #1a2744 !important; }}
+    [data-testid="stSidebar"] * {{ color: #ffffff !important; }}
     [data-testid="stSidebar"] .stRadio label {{
         color: #9DB4C7 !important;
         background: transparent !important;
@@ -240,7 +234,6 @@ def _css():
         font-size: 0.85rem !important;
     }}
 
-    /* 👇 NUEVO: Badge de permisos */
     .permission-badge {{
         display: inline-block;
         background: rgba(91,141,184,0.15);
@@ -252,8 +245,6 @@ def _css():
         font-weight: 600;
         margin-left: 0.5rem;
     }}
-    
-    /* 👇 NUEVO: Modo solo lectura */
     .readonly-mode {{
         opacity: 0.7;
         pointer-events: none;
@@ -293,7 +284,6 @@ def _divider():
 
 
 def _check_permission(permission: Permission) -> bool:
-    """Helper para verificar permisos"""
     perm_checker = st.session_state.get('permission_checker', None)
     return perm_checker and perm_checker.can(permission)
 
@@ -301,13 +291,12 @@ def _check_permission(permission: Permission) -> bool:
 # =============================================================================
 def show():
     _css()
-    
+
     perm_checker = st.session_state.get('permission_checker', None)
     if not perm_checker:
         st.error("Error de permisos")
         return
 
-    # Verificar si tiene acceso a administración
     if not perm_checker.can(Permission.CONFIG_VIEW):
         _card_info("⛔ No tienes permisos para acceder al módulo de Administración", "danger")
         st.stop()
@@ -319,47 +308,36 @@ def show():
         unsafe_allow_html=True
     )
 
-    # 👇 NUEVO: Determinar qué tabs mostrar según permisos
     tabs_disponibles = []
     tab_funciones = []
-    
-    # Usuarios - solo admin
+
     if perm_checker.can(Permission.USER_VIEW_ALL):
         tabs_disponibles.append("👥 Usuarios")
         tab_funciones.append(mostrar_gestion_usuarios)
-    
-    # Habitaciones - admin y gerente
+
     if perm_checker.can(Permission.ROOM_VIEW):
         tabs_disponibles.append("🛏️ Habitaciones")
         tab_funciones.append(mostrar_gestion_habitaciones)
-    
-    # Reservas - todos (pero con restricciones)
+
     if perm_checker.can(Permission.BOOKING_VIEW_ALL):
         tabs_disponibles.append("📋 Reservas")
         tab_funciones.append(mostrar_gestion_reservas)
-    
-    # Huéspedes - todos
+
     tabs_disponibles.append("👤 Huéspedes")
     tab_funciones.append(mostrar_gestion_huespedes)
-    
-    # Facturas - según permisos
+
     if perm_checker.can(Permission.INVOICE_VIEW):
         tabs_disponibles.append("🧾 Facturas")
         tab_funciones.append(mostrar_gestion_facturas)
-    
-    # Tipos Habitación - solo lectura para todos
-    tabs_disponibles.append("🛏️ Tipos Hab.")
+
+    tabs_disponibles.append("🏨 Tipos Hab.")
     tab_funciones.append(mostrar_tipos_habitacion)
-    
-    # Sistema - solo admin
+
     if perm_checker.can(Permission.CONFIG_EDIT):
         tabs_disponibles.append("📊 Sistema")
         tab_funciones.append(mostrar_estado_sistema)
 
-    # Crear tabs
     tab_objects = st.tabs(tabs_disponibles)
-    
-    # Ejecutar función correspondiente
     for i, tab in enumerate(tab_objects):
         with tab:
             tab_funciones[i]()
@@ -368,17 +346,17 @@ def show():
 # =============================================================================
 def mostrar_gestion_usuarios():
     _seccion("👥", "Gestión de Usuarios")
-    
+
     perm_checker = st.session_state.get('permission_checker', None)
-    puede_crear = perm_checker and perm_checker.can(Permission.USER_CREATE)
-    puede_editar = perm_checker and perm_checker.can(Permission.USER_EDIT)
-    puede_eliminar = perm_checker and perm_checker.can(Permission.USER_DELETE)
+    puede_crear   = perm_checker and perm_checker.can(Permission.USER_CREATE)
+    puede_editar  = perm_checker and perm_checker.can(Permission.USER_EDIT)
+    puede_eliminar= perm_checker and perm_checker.can(Permission.USER_DELETE)
 
     usuarios = Usuario.get_all(solo_activos=False)
     if usuarios:
         df = pd.DataFrame(usuarios)
         df['activo'] = df['activo'].apply(lambda x: "✅ Activo" if x else "❌ Inactivo")
-        df['rol'] = df['rol'].str.capitalize()
+        df['rol']    = df['rol'].str.capitalize()
         if 'ultimo_acceso' in df.columns:
             df['ultimo_acceso'] = pd.to_datetime(df['ultimo_acceso'], errors='coerce')
             df['ultimo_acceso'] = df['ultimo_acceso'].dt.strftime('%d/%m/%Y %H:%M').fillna('-')
@@ -388,7 +366,6 @@ def mostrar_gestion_usuarios():
             column_config={"username":"Usuario","nombre_completo":"Nombre","rol":"Rol",
                            "activo":"Estado","ultimo_acceso":"Último acceso"})
 
-        # 👇 NUEVO: Solo admin puede crear usuarios
         if puede_crear:
             _divider()
             _seccion("➕", "Crear Nuevo Usuario")
@@ -399,7 +376,7 @@ def mostrar_gestion_usuarios():
                     nombre_completo = st.text_input("Nombre completo *")
                 with col2:
                     email    = st.text_input("Email *")
-                    rol      = st.selectbox("Rol", ["recepcionista","gerente","admin"])
+                    rol      = st.selectbox("Rol", ["recepcionista", "gerente", "admin"])
                 password = st.text_input("Contraseña *", type="password")
 
                 if st.form_submit_button("Crear usuario", type="primary"):
@@ -413,7 +390,7 @@ def mostrar_gestion_usuarios():
                         else:
                             st.error(r['error'])
         else:
-            _card_info("ℹ️ Modo solo lectura - No tienes permisos para crear usuarios", "info")
+            _card_info("ℹ️ Modo solo lectura — No tienes permisos para crear usuarios", "info")
     else:
         _card_info("📭 No hay usuarios registrados", "info")
 
@@ -440,7 +417,7 @@ def crear_usuario(username, nombre_completo, email, rol, password):
 
 # =============================================================================
 def mostrar_tipos_habitacion():
-    _seccion("🛏️", "Tipos de Habitación")
+    _seccion("🏨", "Tipos de Habitación")
 
     with db.get_cursor() as cursor:
         cursor.execute("""
@@ -460,7 +437,7 @@ def mostrar_tipos_habitacion():
 # =============================================================================
 def mostrar_estado_sistema():
     _seccion("📊", "Estado del Sistema")
-    
+
     perm_checker = st.session_state.get('permission_checker', None)
     puede_editar = perm_checker and perm_checker.can(Permission.CONFIG_EDIT)
 
@@ -475,32 +452,28 @@ def mostrar_estado_sistema():
         facturas_pendientes = cursor.fetchone()['total']
 
     col1, col2, col3, col4 = st.columns(4)
-    with col1: st.metric("Habitaciones activas",    habitaciones)
-    with col2: st.metric("Huéspedes registrados",   huespedes)
-    with col3: st.metric("Reservas activas",         reservas_activas)
-    with col4: st.metric("Facturas pendientes",      facturas_pendientes)
+    with col1: st.metric("Habitaciones activas",  habitaciones)
+    with col2: st.metric("Huéspedes registrados", huespedes)
+    with col3: st.metric("Reservas activas",       reservas_activas)
+    with col4: st.metric("Facturas pendientes",    facturas_pendientes)
 
-    # 👇 NUEVO: Configuración adicional solo para admin
     if puede_editar:
         _divider()
         _seccion("⚙️", "Configuración del Sistema")
-        
         with st.form("form_config_sistema"):
             col1, col2 = st.columns(2)
             with col1:
-                nombre_hotel = st.text_input("Nombre del Hotel", "Hotel Mirador Andino")
-                email_contacto = st.text_input("Email de contacto", "reservas@hotelmiradorandino.pe")
+                nombre_hotel   = st.text_input("Nombre del Hotel",   "Hotel Mirador Andino")
+                email_contacto = st.text_input("Email de contacto",  "reservas@hotelmiradorandino.pe")
             with col2:
-                telefono = st.text_input("Teléfono", "(084) 234-567")
+                telefono  = st.text_input("Teléfono",  "(084) 234-567")
                 direccion = st.text_input("Dirección", "Av. El Sol 456, Cusco, Perú")
-            
-            politicas = st.text_area("Políticas de cancelación", 
+            politicas = st.text_area("Políticas de cancelación",
                                      "Cancelación gratuita hasta 24h antes del check-in")
-            
             if st.form_submit_button("💾 Guardar Configuración", type="primary"):
                 st.success("Configuración guardada (simulado)")
     else:
-        _card_info("ℹ️ Modo solo lectura - Contacta al administrador para cambios", "info")
+        _card_info("ℹ️ Modo solo lectura — Contacta al administrador para cambios", "info")
 
     _divider()
     st.markdown(
@@ -513,11 +486,11 @@ def mostrar_estado_sistema():
 # =============================================================================
 def mostrar_gestion_habitaciones():
     _seccion("🛏️", "Gestión de Habitaciones")
-    
+
     perm_checker = st.session_state.get('permission_checker', None)
-    puede_editar = perm_checker and perm_checker.can(Permission.ROOM_EDIT)
-    puede_crear = perm_checker and perm_checker.can(Permission.ROOM_CREATE)
-    puede_cambiar_tarifas = perm_checker and perm_checker.can(Permission.ROOM_CHANGE_RATES)
+    puede_editar         = perm_checker and perm_checker.can(Permission.ROOM_EDIT)
+    puede_crear          = perm_checker and perm_checker.can(Permission.ROOM_CREATE)
+    puede_cambiar_tarifas= perm_checker and perm_checker.can(Permission.ROOM_CHANGE_RATES)
 
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -540,7 +513,8 @@ def mostrar_gestion_habitaciones():
         df['activa']       = df['activa'].apply(lambda x: "✅" if x else "❌")
         df['tiene_vista']  = df['tiene_vista'].apply(lambda x: "✅" if x else "❌")
         df['tiene_balcon'] = df['tiene_balcon'].apply(lambda x: "✅" if x else "❌")
-        df['tarifa_base']  = df['tarifa_base'].apply(lambda x: f"€ {x:,.2f}")
+        # ── Moneda corregida a S/ ──
+        df['tarifa_base']  = df['tarifa_base'].apply(lambda x: f"S/ {float(x):,.2f}")
 
         ev_hab = st.dataframe(
             df[['numero','piso','tipo_nombre','estado_nombre','tarifa_base','metros_cuadrados','activa']],
@@ -552,8 +526,7 @@ def mostrar_gestion_habitaciones():
         )
         sel = (ev_hab.selection.rows if hasattr(ev_hab,'selection') and ev_hab.selection else None) or []
 
-        # 👇 NUEVO: Edición solo con permisos
-        if sel and sel[0] < len(df) and puede_editar:
+        if sel and sel[0] < len(habitaciones) and puede_editar:
             hab = habitaciones[sel[0]]
             _divider()
             _seccion("✏️", f"Editar Habitación {hab['numero']}")
@@ -563,19 +536,16 @@ def mostrar_gestion_habitaciones():
                     nuevo_estado = st.selectbox("Estado",
                         [(1,"Disponible"),(2,"Ocupada"),(3,"Mantenimiento"),(4,"Reservada"),(5,"Limpieza")],
                         index=hab['estado_id']-1, format_func=lambda x: x[1])
-                    
-                    # 👇 NUEVO: Restricción para cambiar tarifas
                     if puede_cambiar_tarifas:
-                        nueva_tarifa = st.number_input("Tarifa base (€)", min_value=0.0,
+                        nueva_tarifa = st.number_input("Tarifa base (S/) *", min_value=0.0,
                             value=float(hab['tarifa_base']), step=10.0)
                     else:
                         nueva_tarifa = float(hab['tarifa_base'])
-                        st.info(f"Tarifa actual: € {nueva_tarifa:,.2f} (solo lectura)")
-                    
+                        st.info(f"Tarifa actual: S/ {nueva_tarifa:,.2f} (solo lectura)")
                     activa = st.checkbox("Habitación activa", value=hab['activa'])
                 with col2:
-                    tiene_vista   = st.checkbox("Tiene vista",   value=hab['tiene_vista'])
-                    tiene_balcon  = st.checkbox("Tiene balcón",  value=hab['tiene_balcon'])
+                    tiene_vista  = st.checkbox("Tiene vista",   value=hab['tiene_vista'])
+                    tiene_balcon = st.checkbox("Tiene balcón",  value=hab['tiene_balcon'])
                     metros = st.number_input("m²", min_value=0.0,
                         value=float(hab.get('metros_cuadrados') or 0), step=0.5)
                 notas = st.text_area("Notas", value=hab.get('notas','') or '')
@@ -591,20 +561,19 @@ def mostrar_gestion_habitaciones():
                     else:
                         st.error("Error al actualizar la habitación")
 
-        # 👇 NUEVO: Crear nueva habitación solo con permisos
         if puede_crear:
             _divider()
             _seccion("➕", "Nueva Habitación")
             with st.form("form_nueva_habitacion"):
                 col1, col2 = st.columns(2)
                 with col1:
-                    numero    = st.text_input("Número *")
-                    piso      = st.number_input("Piso *", min_value=1, max_value=20, value=1)
-                    tipo_id   = st.selectbox("Tipo *",
+                    numero  = st.text_input("Número *")
+                    piso    = st.number_input("Piso *", min_value=1, max_value=20, value=1)
+                    tipo_id = st.selectbox("Tipo *",
                         [(1,"Individual"),(2,"Doble"),(3,"Suite"),(4,"Familiar"),(5,"Presidencial")],
                         format_func=lambda x: x[1])
                 with col2:
-                    tarifa_base = st.number_input("Tarifa base (€) *", min_value=0.0, value=100.0, step=10.0)
+                    tarifa_base = st.number_input("Tarifa base (S/) *", min_value=0.0, value=100.0, step=10.0)
                     metros      = st.number_input("m²", min_value=0.0, value=20.0, step=0.5)
                     estado_id   = st.selectbox("Estado inicial",
                         [(1,"Disponible"),(2,"Ocupada"),(3,"Mantenimiento"),(4,"Reservada"),(5,"Limpieza")],
@@ -628,7 +597,7 @@ def mostrar_gestion_habitaciones():
                             st.error("Error al crear la habitación")
         else:
             if not puede_editar:
-                _card_info("ℹ️ Modo solo lectura - No tienes permisos de edición", "info")
+                _card_info("ℹ️ Modo solo lectura — No tienes permisos de edición", "info")
     else:
         _card_info("📭 No hay habitaciones registradas", "info")
 
@@ -636,8 +605,8 @@ def mostrar_gestion_habitaciones():
 # =============================================================================
 def mostrar_gestion_reservas():
     _seccion("📋", "Gestión de Reservas")
-    
-    perm_checker = st.session_state.get('permission_checker', None)
+
+    perm_checker   = st.session_state.get('permission_checker', None)
     puede_cancelar = perm_checker and perm_checker.can(Permission.BOOKING_CANCEL)
 
     col1, col2 = st.columns(2)
@@ -647,8 +616,10 @@ def mostrar_gestion_reservas():
     with col2:
         fecha_filtro = st.date_input("Filtrar por fecha check-in", value=None)
 
-    reservas = Reserva.get_by_fechas(fecha_filtro, fecha_filtro + timedelta(days=30)) \
-        if fecha_filtro else Reserva.get_activas()
+    if fecha_filtro:
+        reservas = Reserva.get_by_fechas(fecha_filtro, fecha_filtro + timedelta(days=30))
+    else:
+        reservas = Reserva.get_activas()
 
     if reservas:
         df = pd.DataFrame(reservas)
@@ -657,7 +628,8 @@ def mostrar_gestion_reservas():
 
         df['fecha_check_in']  = pd.to_datetime(df['fecha_check_in']).dt.strftime('%d/%m/%Y')
         df['fecha_check_out'] = pd.to_datetime(df['fecha_check_out']).dt.strftime('%d/%m/%Y')
-        df['tarifa_total']    = df['tarifa_total'].apply(lambda x: f"€ {x:,.2f}")
+        # ── Moneda corregida a S/ ──
+        df['tarifa_total'] = df['tarifa_total'].apply(lambda x: f"S/ {float(x):,.2f}")
 
         st.dataframe(
             df[['codigo_reserva','huesped_nombre','huesped_apellido','habitacion_numero',
@@ -669,19 +641,16 @@ def mostrar_gestion_reservas():
                            "tarifa_total":"Total","estado":"Estado"}
         )
 
-        # 👇 NUEVO: Cancelación solo con permisos
         if puede_cancelar:
             _divider()
             _seccion("⚡", "Cancelar Reserva")
             with st.form("form_cancelar_reserva"):
                 codigo_cancelar = st.text_input("Código de reserva a cancelar")
-                motivo = st.text_area("Motivo de cancelación")
-                
-                # Opción de reembolso según permisos
+                motivo          = st.text_area("Motivo de cancelación")
                 tiene_reembolso = perm_checker and perm_checker.can(Permission.BOOKING_CANCEL_REFUND)
                 if tiene_reembolso:
                     aplicar_reembolso = st.checkbox("Aplicar reembolso")
-                
+
                 if st.form_submit_button("Cancelar Reserva", type="primary"):
                     if codigo_cancelar and motivo:
                         reserva = Reserva.get_by_codigo(codigo_cancelar)
@@ -707,9 +676,9 @@ def mostrar_gestion_reservas():
 # =============================================================================
 def mostrar_gestion_huespedes():
     _seccion("👤", "Gestión de Huéspedes")
-    
-    perm_checker = st.session_state.get('permission_checker', None)
-    puede_editar = perm_checker and perm_checker.can(Permission.USER_EDIT)
+
+    perm_checker     = st.session_state.get('permission_checker', None)
+    puede_editar     = perm_checker and perm_checker.can(Permission.USER_EDIT)
     puede_marcar_vip = perm_checker and perm_checker.can(Permission.USER_EDIT)
 
     busqueda = st.text_input("🔍 Buscar huésped (documento, nombre, email)", key="busqueda_huesped")
@@ -732,24 +701,22 @@ def mostrar_gestion_huespedes():
             on_select="rerun", selection_mode="single-row")
         sel = (ev_hue.selection.rows if hasattr(ev_hue,'selection') and ev_hue.selection else None) or []
 
-        # 👇 NUEVO: Edición solo con permisos
-        if sel and sel[0] < len(df) and puede_editar:
+        if sel and sel[0] < len(huespedes) and puede_editar:
             h = huespedes[sel[0]]
             _divider()
             _seccion("✏️", f"Editar: {h['nombre']} {h['apellido']}")
             with st.form("form_editar_huesped"):
                 col1, col2 = st.columns(2)
                 with col1:
-                    nombre      = st.text_input("Nombre",    value=h.get('nombre',''))
-                    apellido    = st.text_input("Apellido",  value=h.get('apellido',''))
-                    documento   = st.text_input("Documento", value=h.get('numero_documento',''))
-                    email       = st.text_input("Email",     value=h.get('email',''))
+                    nombre       = st.text_input("Nombre",       value=h.get('nombre',''))
+                    apellido     = st.text_input("Apellido",     value=h.get('apellido',''))
+                    documento    = st.text_input("Documento",    value=h.get('numero_documento',''))
+                    email        = st.text_input("Email",        value=h.get('email',''))
                 with col2:
-                    telefono    = st.text_input("Teléfono",     value=h.get('telefono',''))
-                    nacionalidad= st.text_input("Nacionalidad", value=h.get('nacionalidad',''))
-                    # 👇 NUEVO: Marcar VIP según permisos
-                    es_vip      = st.checkbox("Huésped VIP",   value=h.get('es_vip', False), 
-                                              disabled=not puede_marcar_vip)
+                    telefono     = st.text_input("Teléfono",     value=h.get('telefono',''))
+                    nacionalidad = st.text_input("Nacionalidad", value=h.get('nacionalidad',''))
+                    es_vip       = st.checkbox("Huésped VIP",   value=h.get('es_vip', False),
+                                               disabled=not puede_marcar_vip)
 
                 if st.form_submit_button("💾 Actualizar Huésped", type="primary"):
                     huesped = Huesped(id=h['id'], nombre=nombre, apellido=apellido,
@@ -761,7 +728,6 @@ def mostrar_gestion_huespedes():
                     else:
                         st.error("Error al actualizar el huésped")
 
-        # Estadísticas
         _divider()
         col1, col2, col3 = st.columns(3)
         with col1: st.metric("Total huéspedes", len(df))
@@ -778,11 +744,11 @@ def mostrar_gestion_huespedes():
 # =============================================================================
 def mostrar_gestion_facturas():
     _seccion("🧾", "Gestión de Facturas")
-    
-    perm_checker = st.session_state.get('permission_checker', None)
-    puede_crear = perm_checker and perm_checker.can(Permission.INVOICE_CREATE)
-    puede_anular = perm_checker and perm_checker.can(Permission.INVOICE_VOID)
-    puede_descuento = perm_checker and perm_checker.can(Permission.INVOICE_DISCOUNT)
+
+    perm_checker   = st.session_state.get('permission_checker', None)
+    puede_crear    = perm_checker and perm_checker.can(Permission.INVOICE_CREATE)
+    puede_anular   = perm_checker and perm_checker.can(Permission.INVOICE_VOID)
+    puede_descuento= perm_checker and perm_checker.can(Permission.INVOICE_DISCOUNT)
 
     col1, col2 = st.columns(2)
     with col1:
@@ -794,14 +760,18 @@ def mostrar_gestion_facturas():
     facturas = Factura.get_por_rango_fechas(fecha_filtro, date.today())
 
     if facturas:
-        df = pd.DataFrame(facturas)
-        if filtro_estado != "Todas":
-            df = df[df['estado'].str.lower() == filtro_estado.lower()]
+        df      = pd.DataFrame(facturas)
+        df_num  = pd.DataFrame(facturas)   # copia numérica para resumen
 
-        df_num = pd.DataFrame(facturas)  # numérico para resumen
+        if filtro_estado != "Todas":
+            mask   = df['estado'].str.lower() == filtro_estado.lower()
+            df     = df[mask]
+            df_num = df_num[mask]
+
         df['fecha_emision'] = pd.to_datetime(df['fecha_emision']).dt.strftime('%d/%m/%Y')
-        df['total']    = df['total'].apply(lambda x: f"€ {x:,.2f}")
-        df['subtotal'] = df['subtotal'].apply(lambda x: f"€ {x:,.2f}")
+        # ── Moneda corregida a S/ ──
+        df['total']    = df['total'].apply(lambda x: f"S/ {float(x):,.2f}")
+        df['subtotal'] = df['subtotal'].apply(lambda x: f"S/ {float(x):,.2f}")
 
         ev_fac = st.dataframe(
             df[['numero_factura','huesped_nombre','fecha_emision','subtotal','impuestos','total','metodo_pago','estado']],
@@ -825,68 +795,104 @@ def mostrar_gestion_facturas():
                 st.markdown(f"**Fecha:** {pd.to_datetime(fac['fecha_emision']).strftime('%d/%m/%Y')}")
                 st.markdown(f"**Estado:** {fac['estado'].capitalize()}")
             with col2:
-                st.markdown(f"**Subtotal:** € {fac['subtotal']:,.2f}")
-                st.markdown(f"**Impuestos:** € {fac['impuestos']:,.2f}")
-                st.markdown(f"**Total:** € {fac['total']:,.2f}")
+                st.markdown(f"**Subtotal:** S/ {float(fac['subtotal']):,.2f}")
+                st.markdown(f"**Impuestos:** S/ {float(fac['impuestos']):,.2f}")
+                st.markdown(f"**Total:** S/ {float(fac['total']):,.2f}")
                 if fac.get('metodo_pago'):
                     st.markdown(f"**Método pago:** {fac['metodo_pago'].capitalize()}")
 
-            # 👇 NUEVO: Botones de acción según permisos
             col_a, col_b, col_c = st.columns(3)
-            
+
             with col_a:
                 if puede_anular and fac['estado'] != 'cancelada':
-                    if st.button("❌ Anular Factura", type="primary"):
+                    if st.button("❌ Anular Factura", key=f"anular_{fac['id']}", type="primary"):
                         st.warning("¿Confirmar anulación?")
-            
+
             with col_b:
-                if st.button("📄 Ver Detalle"):
+                if st.button("📄 Ver Detalle", key=f"detalle_{fac['id']}"):
                     with db.get_cursor() as cursor:
                         cursor.execute("""
                             SELECT concepto, cantidad, precio_unitario, importe, tipo
                             FROM detalle_factura WHERE factura_id = %s
                         """, (fac['id'],))
                         detalle = cursor.fetchall()
-
                     if detalle:
-                        st.dataframe(pd.DataFrame(detalle), use_container_width=True, hide_index=True)
-            
+                        df_det = pd.DataFrame(detalle)
+                        df_det['precio_unitario'] = df_det['precio_unitario'].apply(lambda x: f"S/ {float(x):,.2f}")
+                        df_det['importe']         = df_det['importe'].apply(lambda x: f"S/ {float(x):,.2f}")
+                        st.dataframe(df_det, use_container_width=True, hide_index=True)
+
             with col_c:
-                if st.button("📥 Generar PDF"):
-                    from utils.pdf_generator import PDFGenerator
+                if st.button("📥 Generar PDF", key=f"pdf_{fac['id']}"):
                     with st.spinner("Generando PDF..."):
                         with db.get_cursor() as cursor:
+                            cursor.execute("""
+                                SELECT f.*, h.nombre as huesped_nombre, h.apellido as huesped_apellido,
+                                       h.numero_documento as huesped_documento,
+                                       r.codigo_reserva
+                                FROM facturas f
+                                JOIN huespedes h ON f.huesped_id = h.id
+                                LEFT JOIN reservas r ON f.reserva_id = r.id
+                                WHERE f.id = %s
+                            """, (fac['id'],))
+                            fac_completa = cursor.fetchone()
+
                             cursor.execute("""
                                 SELECT concepto, cantidad, precio_unitario, importe, tipo
                                 FROM detalle_factura WHERE factura_id = %s
                             """, (fac['id'],))
                             detalle = cursor.fetchall()
-                        
-                        pdf = PDFGenerator()
-                        pdf.create_invoice_pdf(fac, detalle)
-                        pdf_data = pdf.output(dest='S').encode('latin1')
-                        st.download_button("📥 Descargar Factura PDF", data=pdf_data,
-                            file_name=f"factura_{fac['numero_factura']}.pdf",
-                            mime="application/pdf")
 
-        # ── Resumen financiero ────────────────────────────────────────────────
+                        if fac_completa:
+                            pdf = PDFGenerator()
+                            factura_data = {
+                                'numero_factura':    fac_completa['numero_factura'],
+                                'fecha_emision':     fac_completa['fecha_emision'],
+                                'huesped_nombre':    fac_completa['huesped_nombre'],
+                                'huesped_apellido':  fac_completa['huesped_apellido'],
+                                'huesped_documento': fac_completa['huesped_documento'],
+                                'reserva_id':        fac_completa.get('reserva_id'),
+                                'codigo_reserva':    fac_completa.get('codigo_reserva',''),
+                                'subtotal':          float(fac_completa['subtotal']),
+                                'impuestos':         float(fac_completa['impuestos']),
+                                'total':             float(fac_completa['total']),
+                                'metodo_pago':       fac_completa.get('metodo_pago'),
+                                'notas':             fac_completa.get('notas'),
+                            }
+                            detalle_pdf = [
+                                {'concepto': d['concepto'], 'cantidad': d['cantidad'],
+                                 'precio_unitario': float(d['precio_unitario']),
+                                 'importe': float(d['importe'])}
+                                for d in detalle if d.get('concepto')
+                            ]
+                            pdf.create_invoice_pdf(factura_data, detalle_pdf)
+                            pdf_data = _get_pdf_data(pdf)
+                            st.download_button(
+                                "📥 Descargar Factura PDF",
+                                data=pdf_data,
+                                file_name=f"factura_{fac['numero_factura']}.pdf",
+                                mime="application/pdf",
+                                key=f"dl_{fac['id']}"
+                            )
+
+        # ── Resumen financiero ──────────────────────────────────────────────
         _divider()
         col1, col2, col3 = st.columns(3)
         with col1:
-            pend = df_num[df_num['estado']=='pendiente']['total'].sum() if 'estado' in df_num.columns else 0
-            st.metric("Total Pendiente", f"€ {pend:,.2f}")
+            pend = df_num[df_num['estado']=='pendiente']['total'].apply(float).sum() if 'estado' in df_num.columns else 0
+            st.metric("Total Pendiente", f"S/ {pend:,.2f}")
         with col2:
-            pagado = df_num[df_num['estado']=='pagada']['total'].sum() if 'estado' in df_num.columns else 0
-            st.metric("Total Pagado", f"€ {pagado:,.2f}")
+            pagado = df_num[df_num['estado']=='pagada']['total'].apply(float).sum() if 'estado' in df_num.columns else 0
+            st.metric("Total Pagado", f"S/ {pagado:,.2f}")
         with col3:
             st.metric("Total Facturas", len(df))
 
-        # 👇 NUEVO: Crear nueva factura solo con permisos
+        # ── Crear nueva factura ─────────────────────────────────────────────
         if puede_crear:
             _divider()
             _seccion("➕", "Crear Nueva Factura")
 
-            opcion = st.radio("Tipo", ["Desde reserva (automático)","Manual"], horizontal=True)
+            opcion = st.radio("Tipo", ["Desde reserva (automático)", "Manual"], horizontal=True)
 
             if opcion == "Desde reserva (automático)":
                 codigo_reserva = st.text_input("Código de reserva *", key="auto_reserva")
@@ -903,7 +909,7 @@ def mostrar_gestion_facturas():
                     col1, col2, col3 = st.columns(3)
                     with col1:
                         serv_sel = st.selectbox("Seleccionar servicio",
-                            [""] + [f"{s['nombre']} - €{s['precio_base']:.2f}" for s in servicios_disp],
+                            [""] + [f"{s['nombre']} - S/{s['precio_base']:.2f}" for s in servicios_disp],
                             key="sel_servicio")
                     with col2:
                         cant_serv = st.number_input("Cantidad", min_value=1, value=1, key="cant_servicio")
@@ -911,7 +917,8 @@ def mostrar_gestion_facturas():
                         st.markdown("<br>", unsafe_allow_html=True)
                         if st.button("➕ Agregar", key="add_servicio"):
                             if serv_sel:
-                                info = next(s for s in servicios_disp if f"{s['nombre']} - €{s['precio_base']:.2f}" == serv_sel)
+                                info = next(s for s in servicios_disp
+                                            if f"{s['nombre']} - S/{s['precio_base']:.2f}" == serv_sel)
                                 st.session_state.servicios_factura.append({
                                     'concepto': info['nombre'], 'cantidad': cant_serv,
                                     'precio_unitario': info['precio_base'], 'tipo': info['categoria']
@@ -926,7 +933,7 @@ def mostrar_gestion_facturas():
                             st.markdown(
                                 f'<div style="color:{C["text"]}; font-size:0.88rem; padding:0.3rem 0;">'
                                 f'• {serv["concepto"]} ×{serv["cantidad"]} = '
-                                f'€{serv["precio_unitario"] * serv["cantidad"]:,.2f}</div>',
+                                f'S/ {serv["precio_unitario"] * serv["cantidad"]:,.2f}</div>',
                                 unsafe_allow_html=True
                             )
                         with col2:
@@ -934,15 +941,16 @@ def mostrar_gestion_facturas():
                                 st.session_state.servicios_factura.pop(idx)
                                 st.rerun()
 
-                metodo_pago = st.selectbox("Método de pago", ["","efectivo","tarjeta","transferencia"], key="auto_pago")
+                metodo_pago = st.selectbox("Método de pago",
+                    ["","efectivo","tarjeta","transferencia"], key="auto_pago")
                 notas = st.text_area("Notas", key="auto_notas")
 
                 if st.button("Crear Factura Automática", type="primary", key="crear_auto"):
                     if codigo_reserva:
                         reserva = Reserva.get_by_codigo(codigo_reserva)
                         if reserva:
-                            servicios = st.session_state.servicios_factura or None
-                            resultado = FacturaController.crear_factura_desde_reserva(reserva['id'], servicios)
+                            servicios  = st.session_state.servicios_factura or None
+                            resultado  = FacturaController.crear_factura_desde_reserva(reserva['id'], servicios)
                             if resultado['success']:
                                 if metodo_pago:
                                     FacturaController.marcar_pagada(resultado['factura_id'], metodo_pago)
@@ -966,10 +974,11 @@ def mostrar_gestion_facturas():
                     col1, col2 = st.columns(2)
                     with col1:
                         codigo_reserva = st.text_input("Código de reserva (opcional)", key="manual_reserva")
-                        subtotal       = st.number_input("Subtotal (€)", min_value=0.0, value=0.0, step=10.0)
+                        subtotal       = st.number_input("Subtotal (S/)", min_value=0.0, value=0.0, step=10.0)
                     with col2:
-                        impuestos   = st.number_input("Impuestos (€)", min_value=0.0, value=0.0, step=1.0)
-                        metodo_pago = st.selectbox("Método de pago", ["","efectivo","tarjeta","transferencia"], key="manual_pago")
+                        impuestos   = st.number_input("Impuestos (S/)", min_value=0.0, value=0.0, step=1.0)
+                        metodo_pago = st.selectbox("Método de pago",
+                            ["","efectivo","tarjeta","transferencia"], key="manual_pago")
                     notas = st.text_area("Notas", key="manual_notas")
 
                     if st.form_submit_button("Crear Factura Manual", type="primary"):
@@ -979,14 +988,19 @@ def mostrar_gestion_facturas():
                                 datos = {
                                     'huesped_id': reserva['huesped_id'],
                                     'reserva_id': reserva['id'],
-                                    'subtotal': subtotal, 'impuestos': impuestos,
-                                    'total': subtotal + impuestos,
+                                    'subtotal':   subtotal,
+                                    'impuestos':  impuestos,
+                                    'total':      subtotal + impuestos,
                                     'metodo_pago': metodo_pago or None,
-                                    'estado': 'pagada' if metodo_pago else 'pendiente',
-                                    'notas': notas or None,
-                                    'detalle': [{'concepto': f'Alojamiento - Reserva {codigo_reserva}',
-                                                 'cantidad': 1, 'precio_unitario': subtotal,
-                                                 'importe': subtotal, 'tipo': 'alojamiento'}]
+                                    'estado':     'pagada' if metodo_pago else 'pendiente',
+                                    'notas':      notas or None,
+                                    'detalle': [{
+                                        'concepto':        f'Alojamiento - Reserva {codigo_reserva}',
+                                        'cantidad':        1,
+                                        'precio_unitario': subtotal,
+                                        'importe':         subtotal,
+                                        'tipo':            'alojamiento'
+                                    }]
                                 }
                                 r = FacturaController.crear_factura(datos)
                                 if r['success']:
