@@ -1,0 +1,938 @@
+2026-02-24 00:50:17,641 - src.config.database - INFO - 🖥️ Modo local detectado
+2026-02-24 00:50:17,651 - src.config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:50:17,774 - src.config.database - INFO - ✅ Conexión a BD exitosa
+2026-02-24 00:50:17,777 - src.config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:53:39,327 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-24 00:53:48,298 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-24 00:53:48,299 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-24 00:53:48,300 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-24 00:53:48,429 - utils.logger - DEBUG - Usuario encontrado: admin, rol: admin
+2026-02-24 00:53:48,653 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-24 00:53:48,655 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-24 00:53:48,795 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:53:48,858 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:53:48,915 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:53:48,973 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:53:49,026 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:53:49,086 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:53:49,145 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:53:49,304 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:53:49,746 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 00:53:49,848 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:47:51,675 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-24 01:47:59,016 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-24 01:47:59,016 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-24 01:47:59,016 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-24 01:47:59,189 - utils.logger - DEBUG - Usuario encontrado: admin, rol: admin
+2026-02-24 01:47:59,448 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-24 01:47:59,450 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-24 01:47:59,524 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:47:59,579 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:47:59,630 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:47:59,684 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:47:59,848 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:47:59,898 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:47:59,965 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:48:00,017 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:48:00,426 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:48:00,559 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:48:06,519 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:48:06,949 - matplotlib - DEBUG - matplotlib data path: C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\mpl-data
+2026-02-24 01:48:06,959 - matplotlib - DEBUG - CONFIGDIR=C:\Users\Asus\.matplotlib
+2026-02-24 01:48:06,961 - matplotlib - DEBUG - interactive is False
+2026-02-24 01:48:06,962 - matplotlib - DEBUG - platform is win32
+2026-02-24 01:48:07,081 - matplotlib - DEBUG - CACHEDIR=C:\Users\Asus\.matplotlib
+2026-02-24 01:48:07,087 - matplotlib.font_manager - DEBUG - Using fontManager instance from C:\Users\Asus\.matplotlib\fontlist-v390.json
+2026-02-24 01:48:07,454 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:21,224 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:21,366 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:21,516 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:21,600 - utils.logger - INFO - Huésped creado: Luis Cruz
+2026-02-24 01:49:21,722 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:27,209 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:27,283 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:27,362 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:27,526 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:27,669 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:27,773 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:27,847 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:27,901 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:56,390 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:56,461 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:56,533 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:56,745 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:56,820 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:56,899 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:56,971 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:57,040 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:57,106 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:57,168 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:49:57,233 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:02,888 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:02,973 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:03,050 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:03,237 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:03,311 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:03,386 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:03,452 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:03,522 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:03,587 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:03,644 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:50:03,693 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:13,406 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:13,505 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:13,567 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:13,620 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:13,686 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:13,785 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:13,867 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:13,923 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:14,032 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:14,133 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:14,187 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:16,376 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:16,467 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:16,543 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:16,613 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:16,774 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:16,983 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:25,177 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:25,240 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:25,295 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:25,350 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:25,422 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:25,467 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:25,511 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:25,554 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:25,613 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:25,808 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:35,953 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:38,651 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:39,936 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:40,146 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:54,920 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:55,106 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:55,150 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:55,437 - utils.logger - INFO - Reserva creada: RES000028 por usuario 1
+2026-02-24 01:51:55,438 - utils.logger - INFO - Reserva creada: RES000028
+2026-02-24 01:51:55,527 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:51:55,593 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:08,927 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:09,003 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:10,940 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:11,132 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:11,195 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:23,595 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:23,661 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:23,725 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:23,879 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:24,038 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:24,092 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:37,092 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:37,326 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:37,380 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:37,455 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:40,925 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:40,987 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:41,043 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:42,743 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:43,181 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:58,015 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:58,074 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:58,152 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:58,209 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:58,273 - utils.logger - INFO - Check-in realizado: Reserva 28, Habitación 13
+2026-02-24 01:52:58,392 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:58,466 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:52:58,527 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:53:05,736 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 01:53:15,883 - utils.logger - INFO - Usuario cerró sesión
+2026-02-24 02:33:32,694 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-24 02:33:38,867 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-24 02:33:38,868 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-24 02:33:38,868 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-24 02:33:39,041 - utils.logger - DEBUG - Usuario encontrado: admin, rol: admin
+2026-02-24 02:33:39,249 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: admin
+2026-02-24 02:33:46,765 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-24 02:33:46,766 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-24 02:33:46,766 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-24 02:33:46,841 - utils.logger - DEBUG - Usuario encontrado: admin, rol: admin
+2026-02-24 02:33:47,105 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-24 02:33:47,107 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-24 02:33:47,203 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:33:47,290 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:33:47,460 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:33:47,513 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:33:47,570 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:33:47,626 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:33:47,685 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:33:47,741 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:33:48,108 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:33:48,196 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:39:39,995 - src.config.database - INFO - 🖥️ Modo local detectado
+2026-02-24 02:39:39,996 - src.config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-24 02:39:40,040 - src.config.database - INFO - ✅ Conexión a BD exitosa
+2026-02-24 02:39:40,041 - src.config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:28:36,951 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 15:29:01,280 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 15:29:01,281 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 15:29:01,281 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 15:29:01,697 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 15:29:01,963 - utils.logger - WARNING - ❌ Contraseña incorrecta para usuario: recepcionista1
+2026-02-28 15:29:07,783 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 15:29:07,784 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 15:29:07,785 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 15:29:08,035 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 15:29:08,289 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 15:29:08,291 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 15:29:08,358 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:08,548 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:08,618 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:08,719 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:08,774 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:08,833 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:08,902 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:08,992 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:09,537 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:09,648 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:12,444 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:13,002 - matplotlib - DEBUG - matplotlib data path: C:\Users\Asus\AppData\Local\Programs\Python\Python313\Lib\site-packages\matplotlib\mpl-data
+2026-02-28 15:29:13,009 - matplotlib - DEBUG - CONFIGDIR=C:\Users\Asus\.matplotlib
+2026-02-28 15:29:13,011 - matplotlib - DEBUG - interactive is False
+2026-02-28 15:29:13,012 - matplotlib - DEBUG - platform is win32
+2026-02-28 15:29:13,166 - matplotlib - DEBUG - CACHEDIR=C:\Users\Asus\.matplotlib
+2026-02-28 15:29:13,170 - matplotlib.font_manager - DEBUG - Using fontManager instance from C:\Users\Asus\.matplotlib\fontlist-v390.json
+2026-02-28 15:29:13,635 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:20,525 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:20,644 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:20,834 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:20,876 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:20,992 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:21,041 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:21,096 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:29:21,371 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:48,179 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 15:48:56,434 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 15:48:56,435 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 15:48:56,435 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 15:48:56,487 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 15:48:56,696 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 15:48:56,697 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 15:48:56,788 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:56,973 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:57,018 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:57,059 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:57,101 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:57,140 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:57,183 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:57,227 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:57,349 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:57,488 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:58,353 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:48:58,417 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:00,315 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:00,365 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:00,409 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:00,456 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:00,494 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:00,536 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:00,574 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:00,748 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:09,071 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:09,190 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:09,596 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:16,773 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:26,268 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:27,175 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:27,354 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:33,844 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:33,886 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:33,932 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:34,006 - utils.logger - INFO - Reserva creada: RES000029 por usuario 3
+2026-02-28 15:49:34,007 - utils.logger - INFO - Reserva creada: RES000029
+2026-02-28 15:49:34,106 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:49:34,165 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:53:31,875 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:53:31,927 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:53:31,970 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:53:32,015 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:53:32,053 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:53:32,091 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:53:32,247 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:24,694 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 15:55:32,081 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 15:55:32,081 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 15:55:32,082 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 15:55:32,126 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 15:55:32,332 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 15:55:32,343 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 15:55:32,419 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:32,464 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:32,517 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:32,668 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:32,809 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:32,851 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:32,906 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:32,950 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:33,074 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:33,194 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:55,657 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:55:55,719 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:58:53,660 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:58:53,714 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:58:53,758 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:58:53,908 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:58:53,948 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:58:53,989 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 15:58:54,145 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:24,798 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 16:14:29,321 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 16:14:29,322 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 16:14:29,322 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 16:14:29,384 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 16:14:29,609 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 16:14:29,610 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 16:14:29,684 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:29,747 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:29,788 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:29,939 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:29,978 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:30,022 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:30,061 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:30,102 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:30,173 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:30,251 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:30,963 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:14:31,141 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:16,916 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:16,957 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:17,003 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:17,047 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:17,099 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:17,138 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:17,179 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:17,323 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:17,400 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:17,568 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:41,282 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:52,148 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:52,316 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:52,353 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:52,393 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:52,432 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:52,473 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:52,764 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:56,233 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:56,427 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:15:56,701 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:17:47,348 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:17:51,545 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:17:51,750 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:17:51,944 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:17:58,881 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:18:05,546 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:18:14,683 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:18:14,726 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:18:14,883 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:18:14,949 - utils.logger - INFO - Reserva creada: RES000030 por usuario 3
+2026-02-28 16:18:14,952 - utils.logger - INFO - Reserva creada: RES000030
+2026-02-28 16:18:15,064 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:18:15,221 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:18,625 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:18,673 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:18,718 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:18,759 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:18,912 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:19,081 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:29,053 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:29,104 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:30,877 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:31,060 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:31,111 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:37,639 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:37,849 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:37,910 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:44,501 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:44,553 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:44,605 - utils.logger - INFO - Reserva cancelada: ID 30, motivo: motivo de retiro, usuario: 3
+2026-02-28 16:20:44,736 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:44,793 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:44,839 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:20:54,532 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:21:03,657 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:21:03,812 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:21:22,183 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:21:23,207 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:21:23,258 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:21:28,389 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:21:28,438 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:21:30,187 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:21:30,333 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:24:59,484 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 16:25:14,822 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 16:25:14,823 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 16:25:14,823 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 16:25:14,868 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 16:25:15,075 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 16:25:15,077 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 16:25:15,152 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:15,195 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:15,240 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:15,285 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:15,337 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:15,376 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:15,417 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:15,457 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:15,530 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:15,604 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:24,066 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:24,127 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:26,626 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:26,671 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:26,818 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:26,859 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:26,904 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:26,945 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:26,987 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:27,029 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:27,213 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:33,356 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:33,397 - config.database - ERROR - Error de conexión a BD: 'latin-1' codec can't encode characters in position 507-508: ordinal not in range(256)
+2026-02-28 16:25:33,399 - utils.logger - ERROR - Error en navegación: 'latin-1' codec can't encode characters in position 507-508: ordinal not in range(256)
+2026-02-28 16:25:38,308 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:38,354 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:41,800 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:41,849 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:43,076 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:43,247 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:43,302 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:47,744 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:47,793 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:47,938 - utils.logger - INFO - Reserva cancelada: ID 29, motivo: estado mal, usuario: 3
+2026-02-28 16:25:48,044 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:48,197 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:55,194 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:25:55,239 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:26:04,994 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:26:05,040 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:26:05,086 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:26:05,125 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:26:05,173 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:26:05,209 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:26:05,249 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:26:05,412 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:11,049 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:11,197 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:11,234 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:11,274 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:11,310 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:11,347 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:11,384 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:11,553 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:46,025 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:46,075 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:48,038 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:48,082 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:48,234 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:48,418 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:59,272 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:59,458 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:59,540 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:59,589 - utils.logger - INFO - Reserva creada: RES000031 por usuario 3
+2026-02-28 16:27:59,591 - utils.logger - INFO - Reserva creada: RES000031
+2026-02-28 16:27:59,689 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:27:59,747 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:31:25,447 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:31:25,501 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:31:26,950 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:31:27,121 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:31:27,284 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:31:46,234 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:31:46,293 - utils.logger - ERROR - Error en navegación: The default `value` of [datetime.date(2026, 3, 1)] must lie between the `min_value` of 2026-03-07 and the `max_value` of 2036-03-01, inclusively.
+2026-02-28 16:35:02,713 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 16:35:10,355 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 16:35:10,356 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 16:35:10,356 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 16:35:10,402 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 16:35:10,617 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 16:35:10,619 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 16:35:10,693 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:10,743 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:10,788 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:10,835 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:10,881 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:10,920 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:10,962 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:11,001 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:11,080 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:11,154 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:14,932 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:35:14,996 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:36:08,939 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:36:08,984 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:36:10,181 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:36:10,351 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:36:10,406 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:36:25,346 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:36:25,403 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:44,770 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 16:42:48,470 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 16:42:48,470 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 16:42:48,471 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 16:42:48,512 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 16:42:48,717 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 16:42:48,728 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 16:42:48,800 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:48,844 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:48,986 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:49,031 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:49,078 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:49,131 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:49,185 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:49,223 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:49,295 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:49,468 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:50,247 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:50,305 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:56,703 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:56,753 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:59,391 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:59,567 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:42:59,621 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:43:10,438 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:43:10,591 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:20,349 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 16:47:23,396 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 16:47:23,396 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 16:47:23,397 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 16:47:23,440 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 16:47:23,647 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 16:47:23,649 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 16:47:23,723 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:23,768 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:23,816 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:23,963 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:24,016 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:24,166 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:24,209 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:24,253 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:24,335 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:24,414 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:25,064 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:25,121 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:27,733 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:27,779 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:27,829 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:27,871 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:27,910 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:27,949 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:28,117 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:48,152 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:48,209 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:50,541 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:50,720 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:50,770 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:50,827 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:51,372 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:51,566 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:47:51,628 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:05,520 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:05,588 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:14,245 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:14,405 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:14,446 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:19,083 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:19,288 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:19,340 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:20,633 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:20,829 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:20,877 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:22,070 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:22,249 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:22,299 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:24,184 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:24,379 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:24,423 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:24,696 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:24,877 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:24,927 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:24,973 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:33,207 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:33,397 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:48:33,452 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:51:37,451 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:51:37,513 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:51:37,659 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:51:37,700 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:51:37,877 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:51:37,935 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:37,728 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 16:53:49,740 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 16:53:49,741 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 16:53:49,741 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 16:53:49,784 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 16:53:49,990 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 16:53:49,992 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 16:53:50,094 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:50,138 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:50,183 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:50,226 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:50,272 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:50,309 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:50,349 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:50,389 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:50,465 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:50,539 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:51,629 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:51,690 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:59,444 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:53:59,499 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:03,054 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:03,224 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:03,279 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:13,618 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:13,672 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:16,869 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:16,925 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:16,964 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:17,008 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:17,559 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:54:17,616 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:56:34,505 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:56:34,570 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:56:37,640 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:56:37,700 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:56:40,791 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:56:40,852 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:31,565 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 16:57:34,452 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 16:57:34,452 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 16:57:34,453 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 16:57:34,505 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 16:57:34,710 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 16:57:34,712 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 16:57:34,787 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:34,944 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:34,984 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:35,024 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:35,065 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:35,105 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:35,150 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:35,302 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:35,375 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:35,458 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:38,769 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:57:38,845 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:58:12,372 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:58:15,422 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:58:15,474 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:58:18,581 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:58:18,751 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:58:18,797 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 16:58:18,856 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:01:55,610 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 17:01:58,932 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 17:01:58,933 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 17:01:58,933 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 17:01:58,976 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 17:01:59,181 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 17:01:59,183 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 17:01:59,260 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:01:59,302 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:01:59,355 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:01:59,421 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:01:59,468 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:01:59,507 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:01:59,553 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:01:59,592 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:01:59,772 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:01:59,847 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:00,533 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:00,595 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:09,470 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:09,525 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:12,143 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:12,194 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:20,278 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:20,429 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:20,471 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:20,644 - utils.logger - INFO - Check-in realizado: Reserva 31, Habitación 6
+2026-02-28 17:02:20,741 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:20,795 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:20,845 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:40,785 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:40,936 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:40,976 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:41,018 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:41,065 - utils.logger - INFO - Check-out realizado: Reserva 31, Habitación 6
+2026-02-28 17:02:41,166 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:41,222 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:02:41,272 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:31,344 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 17:04:37,418 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 17:04:37,418 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 17:04:37,419 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 17:04:37,562 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 17:04:37,776 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 17:04:37,778 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 17:04:37,854 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:37,895 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:37,938 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:37,982 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:38,030 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:38,069 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:38,109 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:38,154 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:38,226 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:38,305 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:39,203 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:39,273 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:40,513 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:44,768 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:51,720 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:51,775 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:53,702 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:53,753 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:59,007 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:59,186 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:59,234 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:04:59,290 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:01,085 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 17:09:04,306 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 17:09:04,306 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 17:09:04,307 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 17:09:04,360 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 17:09:04,581 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 17:09:04,583 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 17:09:04,660 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:04,719 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:04,768 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:04,812 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:04,864 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:04,904 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:04,946 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:04,986 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:05,062 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:05,137 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:06,689 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:06,757 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:06,818 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:14,109 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:14,166 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:14,232 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:25,923 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:25,977 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:26,043 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:26,091 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:38,251 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:38,405 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:38,464 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:38,508 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:38,558 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:39,242 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:39,297 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:09:39,364 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:00,927 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 17:11:03,934 - utils.logger - INFO - Intento de autenticación para usuario: recepcionista1
+2026-02-28 17:11:03,935 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 17:11:03,935 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 17:11:03,976 - utils.logger - DEBUG - Usuario encontrado: recepcionista1, rol: recepcionista
+2026-02-28 17:11:04,182 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: recepcionista1
+2026-02-28 17:11:04,183 - utils.logger - INFO - ✅ Login exitoso: recepcionista1
+2026-02-28 17:11:04,261 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:04,305 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:04,347 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:04,495 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:04,535 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:04,576 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:04,618 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:04,661 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:04,739 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:04,815 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:05,297 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:05,358 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:05,428 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:09,438 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:09,519 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:09,571 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:13,226 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:13,290 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:13,332 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:13,510 - fpdf.output - DEBUG - Final size summary of the biggest document sections:
+2026-02-28 17:11:13,511 - fpdf.output - DEBUG - - pages: 1.1KiB
+2026-02-28 17:11:13,511 - fpdf.output - DEBUG - - fonts: 304.0B
+2026-02-28 17:11:14,958 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:15,037 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:11:15,105 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:09,542 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:10,202 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:10,374 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:11,846 - utils.logger - INFO - Usuario cerró sesión
+2026-02-28 17:12:15,783 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-28 17:12:15,783 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 17:12:15,784 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 17:12:15,827 - utils.logger - DEBUG - Usuario encontrado: admin, rol: admin
+2026-02-28 17:12:16,033 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-28 17:12:16,034 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-28 17:12:16,110 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:16,151 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:16,196 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:16,335 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:16,376 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:16,419 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:16,461 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:16,507 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:16,580 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:16,663 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:17,883 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:17,953 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:18,014 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:19,960 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:21,401 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:21,464 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:21,523 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:21,575 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:21,639 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:21,696 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:21,748 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:21,790 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:33,900 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:33,966 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:34,024 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:34,080 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:34,129 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:34,188 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:34,233 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:34,274 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:35,197 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:35,252 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:35,308 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:35,360 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:35,412 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:35,473 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:35,620 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:12:35,664 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:29,481 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:30,177 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:30,345 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:30,829 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:30,886 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:30,933 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:30,974 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:31,017 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:31,065 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:31,110 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:31,154 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:31,236 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:31,306 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:31,608 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:15:31,672 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:11,877 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 17:18:11,931 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:12,824 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:12,877 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:12,939 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:13,112 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:13,168 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:13,226 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:13,273 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:13,318 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:19,472 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-28 17:18:19,473 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 17:18:19,473 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 17:18:19,522 - utils.logger - DEBUG - Usuario encontrado: admin, rol: admin
+2026-02-28 17:18:19,733 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-28 17:18:19,735 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-28 17:18:19,833 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:19,899 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:19,967 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:20,034 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:20,099 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:20,246 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:20,288 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:20,335 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:20,435 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:20,520 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:26,334 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:26,406 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:26,471 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:28,704 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:29,836 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:29,893 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:29,960 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:30,015 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:30,069 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:30,122 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:30,276 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:18:30,319 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:19:21,853 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 17:19:25,720 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-28 17:19:25,721 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 17:19:25,722 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 17:19:25,762 - utils.logger - DEBUG - Usuario encontrado: admin, rol: admin
+2026-02-28 17:19:25,969 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-28 17:19:25,971 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-28 17:19:26,080 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:19:26,124 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:19:26,173 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:19:26,220 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:19:26,277 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:19:26,325 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:19:26,366 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:19:26,411 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:19:26,486 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:19:26,567 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:21:01,840 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:21:01,913 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:21:02,006 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:21:02,079 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:21:02,150 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:21:02,230 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:21:02,407 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:21:02,472 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:21:02,690 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:21:10,617 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:31,757 - config.database - INFO - 🖥️ Modo local detectado
+2026-02-28 17:23:36,024 - utils.logger - INFO - Intento de autenticación para usuario: admin
+2026-02-28 17:23:36,024 - config.database - DEBUG - Usando configuración para autenticación
+2026-02-28 17:23:36,025 - config.database - DEBUG - Conectando a BD (auth): localhost/hotel_bd
+2026-02-28 17:23:36,088 - utils.logger - DEBUG - Usuario encontrado: admin, rol: admin
+2026-02-28 17:23:36,296 - utils.logger - INFO - ✅ Usuario autenticado exitosamente: admin
+2026-02-28 17:23:36,298 - utils.logger - INFO - ✅ Login exitoso: admin
+2026-02-28 17:23:36,445 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:36,604 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:36,668 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:36,734 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:36,797 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:36,862 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:36,917 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:36,973 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:37,073 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:37,169 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:38,348 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:43,114 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:44,492 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:46,374 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:46,502 - fpdf.output - DEBUG - Final size summary of the biggest document sections:
+2026-02-28 17:23:46,503 - fpdf.output - DEBUG - - pages: 1.2KiB
+2026-02-28 17:23:46,503 - fpdf.output - DEBUG - - fonts: 304.0B
+2026-02-28 17:23:47,744 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:58,693 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:23:59,653 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:24:01,411 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:24:01,543 - fpdf.fpdf - DEBUG - Page break on page 1 at y=277 for element of height 12 > 282
+2026-02-28 17:24:01,557 - fpdf.output - DEBUG - Final size summary of the biggest document sections:
+2026-02-28 17:24:01,557 - fpdf.output - DEBUG - - pages: 2.0KiB
+2026-02-28 17:24:01,557 - fpdf.output - DEBUG - - fonts: 304.0B
+2026-02-28 17:24:02,207 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:24:10,134 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:24:11,398 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:24:12,445 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:24:12,511 - fpdf.output - DEBUG - Final size summary of the biggest document sections:
+2026-02-28 17:24:12,512 - fpdf.output - DEBUG - - pages: 1018.0B
+2026-02-28 17:24:12,512 - fpdf.output - DEBUG - - fonts: 304.0B
+2026-02-28 17:24:12,858 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
+2026-02-28 17:24:13,038 - fpdf.output - DEBUG - Final size summary of the biggest document sections:
+2026-02-28 17:24:13,038 - fpdf.output - DEBUG - - pages: 1018.0B
+2026-02-28 17:24:13,039 - fpdf.output - DEBUG - - fonts: 304.0B
+2026-02-28 17:24:13,586 - config.database - DEBUG - Conectando a BD: localhost/hotel_bd
